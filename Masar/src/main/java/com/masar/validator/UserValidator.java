@@ -25,12 +25,16 @@ public class UserValidator implements Validator {
     public void validate(Object object, Errors errors) {
         User user = (User) object;
         User oldUser =userRepository.findByEmail(user.getEmail());
-        
+        User oldUser2 =userRepository.findByUsername(user.getUsername());
         if (oldUser != null) {
             // 3
             errors.rejectValue("email", "Exist");
         } 
         
+        if (oldUser2 != null) {
+            // 3
+            errors.rejectValue("username", "Exist");
+        } 
         
         if (!user.getPasswordConfirmation().equals(user.getPassword())) {
             // 3
