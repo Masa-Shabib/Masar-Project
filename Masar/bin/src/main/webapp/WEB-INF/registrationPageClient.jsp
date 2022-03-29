@@ -13,14 +13,10 @@
     
     <p><form:errors path="user.*"/></p>
     
-    <form:form method="POST" action="/registration/654" modelAttribute="user">
+    <form:form method="POST" action="/registration/client" modelAttribute="user">
         <p>
             <form:label path="username">Username:</form:label>
             <form:input path="username"/>
-        </p>
-        <p>
-            <form:label path="email">Email:</form:label>
-			<form:input type="email" path="email" />
         </p>
         <p>
             <form:label path="password">Password:</form:label>

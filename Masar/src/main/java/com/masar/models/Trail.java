@@ -32,16 +32,16 @@ public class Trail {
     @Size(min=3)
     private String location;
     
-    @Size(min=1)
+    
     private double longitude;
     
-    @Size(min=1)
+    
     private double latitude;
     
-    @Size(min=1)
+    
     private double endLongitude;
     
-    @Size(min=1)
+    
     private double endLatitude;
     
     @Size(min=1)

@@ -58,7 +58,7 @@ public class TrailController {
 	public String adminTrailForm(Model model,Principal principal,@ModelAttribute("trail") Trail trail,BindingResult result) {
 		String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-		return "CreateTrail.jsp";
+		return "newTrail.jsp";
 	}
 	
 	@PostMapping("/admin/trails/new")
@@ -66,7 +66,7 @@ public class TrailController {
 			if (result.hasErrors()) {
 				String username = principal.getName();
 		        model.addAttribute("currentUser", userService.findByUsername(username));
-				return "CreateTrail.jsp";
+				return "newTrail.jsp";
 			}else {
 				trailService.creatTrail(trail);
 				return "redirect:/admin/trails";
@@ -80,7 +80,7 @@ public class TrailController {
         model.addAttribute("currentUser", userService.findByUsername(username));
         Trail trail = trailService.findTrailById(id);
 		model.addAttribute("trail", trail);
-		return "EditTrail.jsp";
+		return "editTrail.jsp";
 	}
 	
 	@PostMapping("/admin/trails/{id}/edit")
@@ -88,7 +88,7 @@ public class TrailController {
 			if (result.hasErrors()) {
 				String username = principal.getName();
 		        model.addAttribute("currentUser", userService.findByUsername(username));
-				return "EditTrail.jsp";
+				return "editTrail.jsp";
 			}else {
 				trailService.updateTrail(trail);
 				return "redirect:/admin/trails";
