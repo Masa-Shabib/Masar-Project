@@ -19,6 +19,10 @@
             <form:input path="username"/>
         </p>
         <p>
+            <form:label path="email">Email:</form:label>
+			<form:input type="email" path="email" />
+        </p>
+        <p>
             <form:label path="password">Password:</form:label>
             <form:password path="password"/>
         </p>
@@ -26,6 +30,7 @@
             <form:label path="passwordConfirmation">Password Confirmation:</form:label>
             <form:password path="passwordConfirmation"/>
         </p>
+        
         <input type="submit" value="Register!"/>
     </form:form>
 </body>

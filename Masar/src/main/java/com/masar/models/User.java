@@ -11,10 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -28,6 +30,12 @@ public class User {
     @Size(min=3)
     private String username;
     
+    
+	@Email
+	@Size(min=1)
+	private String email;
+
+    
     @Size(min=5)
     private String password;
     
@@ -38,6 +46,21 @@ public class User {
     private Date createdAt;
     private Date updatedAt;
     
+    @OneToMany(mappedBy = "admin", fetch = FetchType.LAZY)
+    private List<Trail> trails;
+    
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<BusinessTrail> businessTrails;
+    
+    @OneToMany(mappedBy = "commentUser", fetch = FetchType.LAZY)
+    private List<Comment> userComments;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "guests_trails", 
+        joinColumns = @JoinColumn(name = "guest_id"), 
+        inverseJoinColumns = @JoinColumn(name = "bTrail_id"))
+    private List<BusinessTrail> joinedTrails;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -48,7 +71,8 @@ public class User {
     
     public User() {
     }
-    public Long getId() {
+    
+	public Long getId() {
         return id;
     }
     public void setId(Long id) {
@@ -99,4 +123,44 @@ public class User {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public List<Trail> getTrails() {
+		return trails;
+	}
+
+	public void setTrails(List<Trail> trails) {
+		this.trails = trails;
+	}
+
+	public List<BusinessTrail> getBusinessTrails() {
+		return businessTrails;
+	}
+
+	public void setBusinessTrails(List<BusinessTrail> businessTrails) {
+		this.businessTrails = businessTrails;
+	}
+
+	public List<Comment> getUserComments() {
+		return userComments;
+	}
+
+	public void setUserComments(List<Comment> userComments) {
+		this.userComments = userComments;
+	}
+
+	public List<BusinessTrail> getJoinedTrails() {
+		return joinedTrails;
+	}
+
+	public void setJoinedTrails(List<BusinessTrail> joinedTrails) {
+		this.joinedTrails = joinedTrails;
+	}
+    
+    
 }

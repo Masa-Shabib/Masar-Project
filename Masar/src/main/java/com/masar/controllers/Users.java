@@ -19,7 +19,7 @@ import com.masar.validator.UserValidator;
 @Controller
 public class Users {
     
-private UserService userService;
+	private UserService userService;
     
     // NEW
     private UserValidator userValidator;
@@ -63,6 +63,24 @@ private UserService userService;
         userService.saveWithClientRole(user);
         return "redirect:/login";
     }
+    
+    @RequestMapping("/registration/654")
+    public String registerAdminForm(@Valid @ModelAttribute("user") User user) {
+        return "registrationPageAdmin.jsp";
+    }
+    
+    @PostMapping("/registration/654")
+    public String registrationAdmin(@Valid @ModelAttribute("user") User user, BindingResult result, Model model) {
+        // NEW
+        userValidator.validate(user, result);
+        if (result.hasErrors()) {
+            return "registrationPageAdmin.jsp";
+        }
+        
+        userService.saveUserWithAdminRole(user);
+        return "redirect:/login";
+    }
+    
     
     
     @RequestMapping("/login")

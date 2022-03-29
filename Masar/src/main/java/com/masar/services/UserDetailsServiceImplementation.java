@@ -2,7 +2,6 @@ package com.masar.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,15 +21,20 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
     }
     // 1
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(userName);
         
         if(user == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
+        System.out.println(user.getEmail());
+        System.out.println( user.getPassword());
+        System.out.println( getAuthorities(user));
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getAuthorities(user));
     }
+    
+    
+
     
     // 2
     private List<GrantedAuthority> getAuthorities(User user){
