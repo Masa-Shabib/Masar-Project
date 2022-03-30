@@ -33,6 +33,11 @@ public class TrailController {
 			return "Landing.jsp";
 	}
 	
+	@RequestMapping("/masar/details")
+	public String show(Model model) {
+			return "trailsDetails.jsp";
+	}
+	
 	@RequestMapping("/masar/trails")
 	public String allTrails(Model model) {
 		List<Trail> allTrails = trailService.allTrails();
@@ -44,7 +49,7 @@ public class TrailController {
 	public String trailDetails(Model model,@ModelAttribute("comment") Comment comment,@PathVariable ("id") Long id) {
 		Trail trail = trailService.findTrailById(id);
 		model.addAttribute("trail", trail);
-		return "TrailDetails.jsp";
+		return "trailDetails.jsp";
 	}
 	
 	@RequestMapping("/admin/trails")
