@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -32,16 +33,16 @@ public class Trail {
     @Size(min=3)
     private String location;
     
-    @Size(min=1)
+    @Min (value=0)
     private double longitude;
     
-    @Size(min=1)
+    @Min (value=0)
     private double latitude;
     
-    @Size(min=1)
+    @Min (value=0)
     private double endLongitude;
     
-    @Size(min=1)
+    @Min (value=0)
     private double endLatitude;
     
     @Size(min=1)

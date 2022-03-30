@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.masar.models.Comment;
 import com.masar.models.Trail;
+import com.masar.services.CommentService;
 import com.masar.services.TrailService;
 import com.masar.services.UserService;
 
@@ -22,17 +23,23 @@ import com.masar.services.UserService;
 public class TrailController {
 	public final TrailService trailService;
 	private final UserService userService;
+	public final CommentService commentService;
 	
-	public TrailController(TrailService trailService, UserService userService) {
+	
+
+	public TrailController(TrailService trailService, UserService userService, CommentService commentService) {
 		this.trailService = trailService;
 		this.userService = userService;
+		this.commentService = commentService;
 	}
-
+	
+	//Public
 	@RequestMapping("/masar")
 	public String landing(Model model) {
 			return "Landing.jsp";
 	}
 	
+	//Guest
 	@RequestMapping("/masar/trails")
 	public String allTrails(Model model) {
 		List<Trail> allTrails = trailService.allTrails();
@@ -41,11 +48,29 @@ public class TrailController {
 	}
 	
 	@RequestMapping("/masar/trails/{id}")
-	public String trailDetails(Model model,@ModelAttribute("comment") Comment comment,@PathVariable ("id") Long id) {
+	public String trailDetails(Model model,@ModelAttribute("comment") Comment comment,@PathVariable ("id") Long id,Principal principal) {
 		Trail trail = trailService.findTrailById(id);
 		model.addAttribute("trail", trail);
+		String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
 		return "TrailDetails.jsp";
 	}
+	
+	@PostMapping("/masar/trails/{id}")
+	public String addComment(Model model,@Valid @ModelAttribute("comment") Comment comment,BindingResult result,@PathVariable ("id") Long id,Principal principal) {
+		if (result.hasErrors()) {
+			String username = principal.getName();
+	        model.addAttribute("currentUser", userService.findByUsername(username));
+	        Trail trail = trailService.findTrailById(id);
+			model.addAttribute("trail", trail);
+			return "TrailDetails.jsp";
+		}else {
+			commentService.creatComment(comment);
+			return "redirect:/masar/trails/"+id;
+		}
+	}
+	
+	//Admins
 	
 	@RequestMapping("/admin/trails")
 	public String allAdminTrails(Model model) {
@@ -95,5 +120,13 @@ public class TrailController {
 			}
 
 	}
+	
+	@RequestMapping("/admin/trails/{id}/delete")
+	public String deleteEvent(@PathVariable("id")Long id) {
+		trailService.delete(id);
+		return "redirect:/admin/trails/"+id;
+	}
+	
+	
 	
 }
