@@ -33,10 +33,10 @@ public class TrailController {
 			return "Landing.jsp";
 	}
 	
-	@RequestMapping("/masar/details")
-	public String show(Model model) {
-			return "trailsDetails.jsp";
-	}
+//	@RequestMapping("/masar/details")
+//	public String show(Model model) {
+//			return "trailsDetails.jsp";
+//	}
 	
 	@RequestMapping("/masar/trails")
 	public String allTrails(Model model) {

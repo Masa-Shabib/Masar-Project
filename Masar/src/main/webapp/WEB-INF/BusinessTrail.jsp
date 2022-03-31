@@ -60,7 +60,7 @@
 								<form:select class="form-control" type="text" id="relatedTrail"
 								path="relatedTrail" placeholder="Category" rows="3">
 								<c:forEach var="trail" items="${allTrails}">
-								<form:option value="${trail.id}"><c:out value="${trail.name`}"></c:out></form:option>
+								<form:option value="${trail.id}"><c:out value="${trail.name}"></c:out></form:option>
 								</c:forEach>
 								</form:select>
 								<form:label path="relatedTrail" for="floatingInput">RelatedTrail</form:label>

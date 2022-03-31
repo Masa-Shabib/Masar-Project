@@ -21,16 +21,13 @@
 <script type="text/javascript">
 function initMap() {
 	  const map = new google.maps.Map(document.getElementById("map"), {
-	    zoom: 8,
+	    zoom: 12,
 	    center: { lat: 31.92789083995335, lng: 35.17532556430331 },
 	    
 	  });
-	  // Create an array of alphabetical characters used to label the markers.
+	  
 	  const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	  // Add some markers to the map.
-	  // Note: The code uses the JavaScript Array.prototype.map() method to
-	  // create an array of markers based on a given "locations" array.
-	  // The map() method here has nothing to do with the Google Maps API.
+	  
 	  const markers = locations.map((location, i) => {
 	    return new google.maps.Marker({
 	      position: location,
@@ -38,7 +35,7 @@ function initMap() {
 	    });
 	  });
 
-	  // Add a marker clusterer to manage the markers.
+	  
 	  new MarkerClusterer(map, markers, {
 	    imagePath:
 	      "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
@@ -56,8 +53,9 @@ function initMap() {
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-  height: 50%;
+  height: 65%;
   width: 50%;
+  margin-left: 333px;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -72,33 +70,43 @@ body {
   </head>
   <body>
   
+  <div class = "container-md-fluid  p-5">
+  <div class = "row justify-content-around ">
+<div class = "col-7  p-3 mt-3 ">
+  <h3>Name:<c:out value="${trail.name}"></c:out></h3>
+  </div>
+</div>
+  <div class = "row justify-content-around ">
+            <div class = "col-7 border p-3 ">
+    <img src="${trail.imgUrl}"  alt="..." />
+    </div>
+</div>
+</div>
+  
+  
    <div id="map"></div>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    
+   
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&channel=2"
       defer
     ></script>
-  <div class = "container-md-fluid m-5 p-5">
-  <h3>Name:<c:out value="${trail.name}"></c:out></h3>
-  <div class = "row justify-content-between ">
-            <div class = "col-5 border p-3 ">
-    <img alt="" src="">
-    </div>
-</div>
+  
 
 
-<div class = "row" >
- <div class = "col-5 border p-3 mt-3 ">
+<div class = "container-md-fluid  p-5">
+<div class = "row justify-content-around ">
+ <div class = "col-7 border p-3 mt-3 ">
 	<h5>Location:<c:out value="${trail.location}"></c:out></h5>
 	<h5>Category<c:out value="${trail.category}"></c:out></h5>
 	<h5>Distance<c:out value="${trail.distance}"></c:out></h5>
 	<h5>Description<c:out value="${trail.description}"></c:out></h5>
    </div>
 </div>
+<div class = "row justify-content-around ">
+<div class = "col-7 border p-3 mt-3 ">
 <h5>User Experience</h5>
-<div class = "row" >
- <div class = "col-5 border p-3 mt-3 ">
- <form:form action="/masar/trails/${trail.id}/addcomment" method="post"  modelAttribute="comment">
+<form:form action="/masar/trails/${trail.id}/addcomment" method="post"  modelAttribute="comment">
   <form:input path="commentTrail" value="${trail.id}"  class="form-control" type="hidden" />
   <form:input path="commentUser" value="${currenUser.id}"  class="form-control" type="hidden" />
  <form:label path="comment"  class="col-form-label"> </form:label>
@@ -111,18 +119,9 @@ body {
   <button type="submit" class="btn btn-primary mt-3">Submit</button>
   
   </form:form>
- </div>
 </div>
-<div class = "row" >
- <div class = "col-5 border p-3 mt-3 ">
- <c:forEach var="comment" items="${allComments}">
-           <p ><c:out value="${comment.userComments}"></c:out>
-           <c:out value="${comment.userComments.userName}"></c:out></p>
-            </c:forEach>
- </div>
- </div>
 </div>
-
+</div>
 
   </body>
 </html>

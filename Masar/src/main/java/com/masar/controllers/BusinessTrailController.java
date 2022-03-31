@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +56,8 @@ public class BusinessTrailController {
 	public String businessTrail(Model model ,@PathVariable ("id") Long id) {
 		BusinessTrail businessTrail = businessTrailService.findbusinessTrailById(id);
 		model.addAttribute("businessTrail", businessTrail);
+		List<User> joinedUsers= businessTrail.getJoinedGuests();
+		model.addAttribute("joinedUsers", joinedUsers);
 		return "businessTrailsDet.jsp";
 	}
 	
@@ -80,7 +83,7 @@ public class BusinessTrailController {
 
 	}
 	
-	@RequestMapping("/client/trails/{id}/edit")
+	@RequestMapping("/client/businesstrails/{id}/edit")
 	public String clientTrailEditForm(Model model,Principal principal,@PathVariable ("id") Long id) {
 		String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
@@ -91,20 +94,24 @@ public class BusinessTrailController {
 		return "editBusinessTrail.jsp";
 	}
 	
-	@PutMapping("/client/trails/{id}/edit")
-	public String clientEditTrail(Model model,Principal principal,@Valid @ModelAttribute("trail") BusinessTrail trail,BindingResult result,@PathVariable ("id") Long id ) {
+	@PostMapping("/client/businesstrails/{id}/edit")
+	public String adminEditTrail(Model model,Principal principal,@Valid @ModelAttribute("trail") BusinessTrail trail,BindingResult result,@PathVariable ("id") Long id ) {
 			if (result.hasErrors()) {
 				String username = principal.getName();
 		        model.addAttribute("currentUser", userService.findByUsername(username));
-		        List<Trail> allTrails = trailService.allTrails();
-				model.addAttribute("allTrails", allTrails);
-		        return "editBusinessTrail.jsp";
+				return "editBusinessTrail.jsp";
 			}else {
 				businessTrailService.updateBusinessTrail(trail);
-				return "redirect:/admin/trails";
+				return "redirect:/client/businessTrails";
 			}
 
 	}
-
+	
+	@RequestMapping("/client/delete/{id}")
+	public String delete(@PathVariable(value = "id") long id) {
+		
+		businessTrailService.deleteTrail(id);
+			return "redirect:/client/businessTrails";
+		}
 	
 }

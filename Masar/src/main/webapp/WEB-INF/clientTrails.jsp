@@ -33,16 +33,12 @@
                     <c:forEach var="trail" items="${allBusinessTrails}">
                         <tr>
                             <td>
-                                <a href="/trails/${trail.id}"><c:out value="${trail.name}" /></a>
+                                <a href="/client/businessTrails/${trail.id}"><c:out value="${trail.name}" /></a>
                             </td>
                            
                             <td class="d-flex justify-content-around">
-                                <a href="/trails/${trail.id}/edit" class="btn  btn-warning">Edit</a>
-                                <form:form action="/trails/${trail.id}/delete" method="post">
-                                <input type="hidden" name="_method" value="delete">
-                                <button type="submit" class="btn btn-sm btn-danger">Delete
-                                </button>
-                                </form:form>
+                                <a href="/client/businesstrails/${trail.id}/edit" class="btn  btn-warning">Edit</a>
+                                <a href="/client/delete/${trail.id}" class="btn  btn-danger">Delete</a>
                             </td>
                         </tr>
                     </c:forEach>

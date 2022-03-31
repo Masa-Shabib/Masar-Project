@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <meta charset="ISO-8859-1">
-<title>Add a new Trail</title>
+<title>Edit Business trail</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
@@ -35,7 +35,7 @@
 					<div class="col text-start">
 
 
-						<form:form action="/client/businesstrails/new" method="post" modelAttribute="trail">
+						<form:form action="/client/businesstrails/${trail.id}/edit" method="post" modelAttribute="trail">
 						<form:input type="hidden" path="client" value="${currentUser.id}"/> 
 						<form:input type="hidden" path="id" value="${trail.id}"/>
 						<input type="hidden" name="_method" value="put">
@@ -84,7 +84,7 @@
 							</div>
 							
 							<button type="submit" class="btn btn-success float-end ms-2">Submit</button>
-							<a href="/masar" class="btn btn-danger float-end">Cancel</a>
+							<a href="/client/businessTrails" class="btn btn-danger float-end">Cancel</a>
 						</form:form>
 					</div>
 

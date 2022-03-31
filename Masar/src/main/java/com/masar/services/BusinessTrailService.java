@@ -54,4 +54,8 @@ public class BusinessTrailService {
         editTrail.setPrice(trail.getPrice());
         return businessTrailRepository.save(editTrail);
     }
+	
+	public void deleteTrail(long id) {
+		businessTrailRepository.deleteById(id);
+	}
 }
