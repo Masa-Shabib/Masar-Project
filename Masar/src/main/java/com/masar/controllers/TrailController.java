@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.masar.models.Comment;
 import com.masar.models.Trail;
@@ -27,10 +28,13 @@ public class TrailController {
 		this.trailService = trailService;
 		this.userService = userService;
 	}
+	
 
 	@RequestMapping("/masar")
-	public String landing(Model model) {
-			return "Landing.jsp";
+	public String landing(Model model , Principal principal) {
+		
+        model.addAttribute("currentUser", principal);
+			return "landingPage.jsp";
 	}
 	
 	@RequestMapping("/masar/trails")
@@ -51,7 +55,7 @@ public class TrailController {
 	public String allAdminTrails(Model model) {
 		List<Trail> allTrails = trailService.allTrails();
 		model.addAttribute("allTrails", allTrails);
-		return "AdminTrails.jsp";
+		return "adminTrails.jsp";
 	}
 	
 	@RequestMapping("/admin/trails/new")
@@ -95,5 +99,14 @@ public class TrailController {
 			}
 
 	}
+	
+	@RequestMapping("/masar/trails/search")
+    public String searchTrails(Model model,@RequestParam("location") String location) {
+        List<Trail> searchTrails = trailService.findTrailsByLocation(location);
+            model.addAttribute("trails", searchTrails);
+            List<Trail> allTrails = trailService.allTrails();
+            model.addAttribute("allTrails", allTrails);
+            return "searchTrails.jsp";
+    }
 	
 }
