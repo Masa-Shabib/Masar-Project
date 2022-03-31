@@ -9,6 +9,6 @@ import com.masar.models.Trail;
 @Repository
 public interface TrailRepository extends CrudRepository<Trail, Long> {
 	List <Trail> findAll();
-	List <Trail> findByLocation(String location);
-	
+	List <Trail> findByLocationContains(String location); 
+	List <Trail> findByCategoryContains(String category); 
 }

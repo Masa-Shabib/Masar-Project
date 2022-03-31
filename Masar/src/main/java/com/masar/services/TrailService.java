@@ -31,12 +31,16 @@ public class TrailService {
     }
 	
 	public List<Trail> findTrailsByLocation(String location){
-		return trailRepository.findByLocation(location);
+		return trailRepository.findByLocationContains(location);
+	}
+	
+	public List<Trail> findTrailsByCategory(String category){
+		return trailRepository.findByCategoryContains(category);
 	}
 	
 	
 	public Trail creatTrail(Trail trail) {
-        		return trailRepository.save(trail);
+        return trailRepository.save(trail);
         }
 	
 	public Trail updateTrail(Trail trail) {

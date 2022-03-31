@@ -6,8 +6,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login Page</title>
+<!-- for Bootstrap CSS -->
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<!-- YOUR own local CSS -->
+<link rel="stylesheet" href="/css/main.css"/>
+<!-- For any Bootstrap that uses JS or jQuery-->
+<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+	<div class="container-lg-fluid m-3 p-3 " >
+		<div class="row justify-content-around mb-4">
+	<div class = "col-4 mt-5">
     <c:if test="${logoutMessage != null}">
         <c:out value="${logoutMessage}"></c:out>
     </c:if>
@@ -16,16 +26,23 @@
         <c:out value="${errorMessage}"></c:out>
     </c:if>
     <form method="POST" action="/login">
-        <p>
-            <label for="username">Email:</label>
-            <input type="text" id="username" name="username"/>
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
-        </p>
+    	<div class="form-floating my-3">
+            <input type="text" id="username" name="username" class="form-control" id="floatingInput"/>
+            <label for="username" for="floatingInput">Email:</label>
+        </div>
+        <div class="form-floating my-3">
+            <input type="password" id="password" name="password" class="form-control" id="floatingInput" />
+            <label for="password" for="floatingInput">Password</label>
+        </div>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" value="Login!"/>
+        <input type="submit" value="Login!" class="btn btn-outline-warning align-self-center"/>
     </form>
+    </div>
+    </div>
+    </div>
 </body>
 </html>
+
+ 
+   
+    		

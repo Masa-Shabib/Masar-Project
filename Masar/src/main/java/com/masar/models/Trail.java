@@ -51,10 +51,10 @@ public class Trail {
     @Size(min=1)
     private String distance;
     
-    @Size(min=1)
+    @Size(min=1 , max= 700)
     private String imgUrl;
     
-    @Size(min=10)
+    @Size(min=10 , max= 700)
     private String description;
     
     @Column(updatable=false)
