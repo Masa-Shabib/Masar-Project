@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -34,10 +35,10 @@ public class BusinessTrail {
     @Size(min=10)
     private String description;
     
-    @Size(min=10)
+    @Min(value=0)
     private double price;
     
-    @Size(min=1)
+    
     private Long relatedTrail;
     
     @Column(updatable=false)

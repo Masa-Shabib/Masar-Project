@@ -13,7 +13,7 @@
     
     <p><form:errors path="user.*"/></p>
     
-    <form:form method="POST" action="/registration/client" modelAttribute="user">
+    <form:form method="POST" action="/registration/654" modelAttribute="user">
         <p>
             <form:label path="username">Username:</form:label>
             <form:input path="username"/>

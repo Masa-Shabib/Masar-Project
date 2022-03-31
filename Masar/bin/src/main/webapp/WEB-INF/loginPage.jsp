@@ -17,7 +17,7 @@
     </c:if>
     <form method="POST" action="/login">
         <p>
-            <label for="username">Username</label>
+            <label for="username">Email:</label>
             <input type="text" id="username" name="username"/>
         </p>
         <p>
