@@ -78,6 +78,8 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+        margin-left: calc(50% - 50vw);
+   		margin-right: calc(50% - 49.5vw);
       }
 	
 	#vision{
@@ -85,6 +87,10 @@
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
+        margin-left: calc(50% - 50vw);
+   		margin-right: calc(50% - 49.5vw);
+        
+        
       }
 	
       /* Height for devices larger than 576px */
@@ -345,11 +351,12 @@
         </div>
       </section>
      <!--Section: Content--> 
+ 
+      <hr id="users" class="my-5" />
       
       
-      <hr class="my-5" />
       <!--Section: Content-->
-      <section id="users" class="d-flex align-items-center">
+      <section  class="d-flex align-items-center">
       <div>
           <div class="row">
             <div class="col-md-6 gx-5 mb-4">
@@ -442,9 +449,9 @@
             
  		<img style="width:800px;height:300px" alt="Masar Logo" src="https://i.ibb.co/L9TyH4d/masar.png">
  		
-           <p>
-           Masar is built to enrich our lives and enlarge our understanding of Palestinian history,
-            while creating for us a sense of continuity through outdoor trips to historical landmarks which strengthens
+           <p style= "font-size:25px;font-weight:500">
+           Masar is built to enrich our lives and enlarge our understanding of Palestinian history,<br>
+            while creating for us a sense of continuity through outdoor trips to historical landmarks which strengthens<br>
              the roots of Palestinian identity, through observing the beauty of nature in our beloved holy homeland.
            
 			</p>
@@ -476,7 +483,7 @@
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     	<h6>Designed by Masa Shabib, Mubarak Mubarak and Mohammad Omair</h6>
-      © 2030 Copyright:
+      © 2022 Copyright:
       <a class="text-dark" href="/masar">Masar.com</a>
     </div>
     <!-- Copyright -->

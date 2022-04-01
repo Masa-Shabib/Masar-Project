@@ -84,11 +84,7 @@
 							</td>	
 							<td class="d-flex justify-content-around">
 								<a href="/admin/trails/${trail.id}/edit" class="btn  btn-warning">Edit</a>
-								<form:form action="/admin/trails/${trail.id}/delete" method="post">
-								<input type="hidden" name="_method" value="delete">
-								<button type="submit" class="btn btn-sm btn-danger">Delete
-								</button>
-								</form:form>
+								<a href="/admin/trails/${trail.id}/delete" class="btn  btn-danger">Delete</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -104,7 +100,7 @@
 		</div>
 		<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
 		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
-        <p style="color: gray;">Copyright  2022 Private Ownership - Axsos Academy - Ramllah, Palestine</p>
+        <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
 	  </footer >
 </body>
 </html>

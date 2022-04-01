@@ -10,7 +10,6 @@ import com.masar.models.BusinessTrail;
 import com.masar.models.User;
 
 @Repository
-
 public interface BusinessTrailRepository extends CrudRepository<BusinessTrail,Long> {
 	
 	List<BusinessTrail> findAll();

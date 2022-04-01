@@ -177,7 +177,7 @@
 	</div>
 	<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
 		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
-        <p style="color: gray;">Copyright  2022 Private Ownership - Axsos Academy - Ramllah, Palestine</p>
+        <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
 	  </footer >
 </body>
 </html>

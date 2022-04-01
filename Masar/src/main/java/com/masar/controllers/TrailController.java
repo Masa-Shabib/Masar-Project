@@ -213,7 +213,7 @@ public class TrailController {
 	
 	@RequestMapping("/admin/trails/{id}/delete")
 	public String deleteEvent(@PathVariable("id")Long id) {
-		trailService.delete(id);
+		trailService.deleteTrail(id);
 		return "redirect:/admin/trails/";
 	}
 	
