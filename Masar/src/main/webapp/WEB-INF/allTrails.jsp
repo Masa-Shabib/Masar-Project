@@ -22,7 +22,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
         <div class="container-fluid">
             <a class="navbar-brand me-5" href="/masar"><img
-                    src="https://lh6.googleusercontent.com/QS_3nsqb4MyzTGWUkOaze2C2DRbchtBTJ-1XKSSWlddQmfRHzMR8TgVlqUA3mhWh20TZktkM3KGXA2-tRiXsIWh154ummjsgpMeTSRj_-RWeK8FBMnKcaom1WgSgTCZeuw=w1280"
+                    src="https://i.ibb.co/L9TyH4d/masar.png"
                     alt="logo" style="width: 200px; height: 60px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,12 +114,12 @@
 							<form action="/masar/trails/filter_location" >
 								<p class="mt-3" style="font-size: 20px;"><b>filter by Location</b></p>
 								<input type="radio" name="t_location" value="" checked style="display: none;">
-								 <c:forEach var="item" items="${allTrails}">
+								 <c:forEach var="item" items="${locations}">
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="t_location" value="${item.location}"
+										<input class="form-check-input" type="radio" name="t_location" value="${item}"
 											id="flexRadioDefault1">
-										<label class="form-check-label" for="${item.location}" style="font-size: 12px;">
-											<c:out value="${item.location}"></c:out>
+										<label class="form-check-label" for="${item}" style="font-size: 12px;">
+											<c:out value="${item}"></c:out>
 										</label>
 									</div>
 								</c:forEach>

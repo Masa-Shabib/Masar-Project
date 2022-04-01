@@ -18,64 +18,6 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
-        <div class="container-fluid">
-            <a class="navbar-brand me-5" href="/masar"><img
-                    src="https://i.ibb.co/L9TyH4d/masar.png"
-                    alt="logo" style="width: 200px; height: 60px;"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/"
-                            style=" font-size: 20px;">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/masar/trails" style="font-size: 20px;">Trails</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/masar/businessTrails" style="font-size: 20px;">Business Trails</a>
-                    </li>
-                    
-						<c:set var="user2" value="2"/>
-						<c:set var="user3" value="3"/>
-								 <c:forEach var="item" items="${currentUser.roles}">
-							<c:choose>
-							    <c:when test="${(item.id == user3)}">
-							         <li class="nav-item">
-				                        <a class="nav-link" href="/client/businessTrails/new" style="font-size: 20px;">Add Trail</a>
-				                    </li>
-				                    <li class="nav-item">
-				                        <a class="nav-link" href="/client/businessTrails" style="font-size: 20px;">Your Trails</a>
-				                    </li>
-								</c:when>   
-							    <c:otherwise>
-							   
-							    	<c:if test="${item.id == user2}">
-							    		
-		                             <li class="nav-item">
-				                        <a class="nav-link" href="/admin/trails/new" style="font-size: 20px;">Add Trail</a>
-				                    </li>
-				                    <li class="nav-item">
-				                        <a class="nav-link" href="/admin/trails" style="font-size: 20px;">Your Trails</a>
-				                    </li>
-							    		</c:if>
-                        			</c:otherwise>
-							</c:choose>
-									</c:forEach>
-							 <li class="nav-item">
-				                 <form id="logoutForm" method="POST" action="/logout">
-								        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-								        <input type="submit" value="Logout!"  class="btn btn-outline-secondary "/>
-								    </form>
-				              </li>
-		                </ul>
-		            </div>
-		        </div>
-		    </nav>
 	<div class="container">
 
 		<div class="row my-5">
@@ -85,9 +27,14 @@
 						<h3>Edit ${trail.name}</h3>
 
 					</div>
+					<div class="col text-end">
+						<a class="btn btn-primary" href="/masar">Back to Homepage</a>
+					</div>
 				</div>
 				<div class="row">
 					<div class="col text-start">
+
+						<img alt="pic" src="${trail.imgUrl}">
 						<form:form action="/admin/trails/${trail.id}/edit" method="post" modelAttribute="trail">
 						<input type="hidden" name="_method" value="put">
 						<form:input type="hidden" path="admin" value="${currentUser.id}"/> 
@@ -161,8 +108,8 @@
 							<a href="/masar" class="btn btn-danger float-end">Cancel</a>
 						</form:form>
 					</div>
-					<div class="row text-start ">
-						<div class="col ">
+					<div class="row text-start">
+						<div class="col">
 							<form:form action="/trails/${trail.id}/delete" method="post">
 								<input type="hidden" name="_method" value="delete">
 								<button type="submit" class="btn btn-sm btn-danger">Delete
@@ -175,9 +122,5 @@
 			</div>
 		</div>
 	</div>
-	<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
-		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
-        <p style="color: gray;">Copyright  2022 Private Ownership - Axsos Academy - Ramllah, Palestine</p>
-	  </footer >
 </body>
 </html>

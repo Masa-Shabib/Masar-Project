@@ -22,7 +22,7 @@
 	<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
         <div class="container-fluid">
             <a class="navbar-brand me-5" href="/masar"><img
-                    src="https://lh6.googleusercontent.com/QS_3nsqb4MyzTGWUkOaze2C2DRbchtBTJ-1XKSSWlddQmfRHzMR8TgVlqUA3mhWh20TZktkM3KGXA2-tRiXsIWh154ummjsgpMeTSRj_-RWeK8FBMnKcaom1WgSgTCZeuw=w1280"
+                    src="https://i.ibb.co/L9TyH4d/masar.png"
                     alt="logo" style="width: 200px; height: 60px;"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,15 +128,34 @@
 			</div>
 			<div class="col-10">
 				 <div class="row row-cols-1 row-cols-md-2 row-cols-sm-2 g-4">
-					<c:forEach var="item" items="${allTrails}">
+					<c:forEach var="item" items="${bTrails}">
 							            <div class="col">
 							            	<div class="card h-100"  >
-											  <h5 class="card-header"><c:out value="${itemclient.username}"></c:out></h5>
+											  <h5 class="card-header">Added by <c:out value="${item.client.username}"></c:out></h5>
 											  <div class="card-body">
 											    <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
 											    <p class="card-text">Description: <c:out value="${item.description}"></c:out></p>
-											    <a href="/masar/trails/#" class="btn btn-outline-secondary ">Details</a>
-							                       <a href="/masar/trails/${item.id}/join" class="btn btn-outline-secondary ">Join</a>
+											    <a href="/masar/trails/${item.relatedTrail}" class="btn btn-outline-secondary ">Details</a>
+	
+		                            <c:set var="attending" value="${false}"/>
+		                            <c:forEach items="${item.joinedGuests}" var="attendee">
+		                            <c:set var="user1" value="${attendee.id}"/>
+										<c:set var="user2" value="${currentUser.id}"/>
+			                            <c:if test="${user1 == user2}">
+		                                    <c:set var="attending" value="${true}"/>
+		                                </c:if>
+		                            </c:forEach>
+		                            <c:choose>
+		                                <c:when test="${attending == false}">
+		                                    <a href="/masar/businessTrails/${item.id}/join" class="btn btn-outline-secondary ">Join</a>
+		                                </c:when>
+		                                <c:otherwise>
+		                                    <a href="/masar/businessTrails/${item.id}/cancel" class="btn btn-outline-secondary ">cancel</a>
+		                                </c:otherwise>
+		                            </c:choose>
+											  </div>
+											  <div class="card-footer text-muted">
+											    2 days ago
 											  </div>
 											</div>
 							            </div>

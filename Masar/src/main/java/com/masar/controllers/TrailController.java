@@ -1,6 +1,7 @@
 package com.masar.controllers;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,8 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.masar.models.BusinessTrail;
 import com.masar.models.Comment;
 import com.masar.models.Trail;
+import com.masar.models.User;
+import com.masar.services.BusinessTrailService;
 import com.masar.services.CommentService;
 import com.masar.services.TrailService;
 import com.masar.services.UserService;
@@ -25,32 +29,42 @@ public class TrailController {
 	public final TrailService trailService;
 	private final UserService userService;
 	public final CommentService commentService;
-	
+	public final BusinessTrailService businessTrailService;
 	
 
-	public TrailController(TrailService trailService, UserService userService, CommentService commentService) {
+	
+	
+	public TrailController(TrailService trailService, UserService userService, CommentService commentService,
+			BusinessTrailService businessTrailService) {
 		this.trailService = trailService;
 		this.userService = userService;
 		this.commentService = commentService;
+		this.businessTrailService = businessTrailService;
 	}
-	
+
+
 	//Public
-	@RequestMapping(value ="/masar")
-	public String landing(Model model) {
-			return "Landing.jsp";
-	}
-	@RequestMapping(value = "/")
-	public String landing2(Model model) {
-			return "redirect:/masar";
+	@RequestMapping("/masar")
+	public String landing(Model model , Principal principal) {
+        model.addAttribute("currentUser", principal);
+			return "landingPage.jsp" ;
+
 	}
 	
-	//Guest
+	
 	@RequestMapping("/masar/trails")
 	public String allTrails(Model model,Principal principal) {
 		String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
 		List<Trail> allTrails = trailService.allTrails();
 		model.addAttribute("allTrails", allTrails);
+		List <String> locations = new ArrayList<String>() ;
+		for (Trail trail : allTrails) {
+			if(!locations.contains(trail.getLocation())) {
+				locations.add(trail.getLocation());
+			}
+		}
+		model.addAttribute("locations", locations);
 		return "allTrails.jsp";
 	}
 	
@@ -58,9 +72,28 @@ public class TrailController {
 	public String businessTrails(Model model,Principal principal) {
 		String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-		List<Trail> allTrails = trailService.allTrails();
+        List<Trail> allTrails = trailService.allTrails();
 		model.addAttribute("allTrails", allTrails);
+		List<BusinessTrail> bTrails = businessTrailService.getAllBusinessTrail();
+		model.addAttribute("bTrails", bTrails);
 		return "businessTrailsGuests.jsp";
+	}
+	
+	@RequestMapping("/masar/businessTrails/{id}/join")
+	public String joinTrail(Model model,@PathVariable ("id") Long id,Principal principal) {
+		BusinessTrail trail = businessTrailService.findbusinessTrailById(id);
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		businessTrailService.joinBusinessTrail(trail, user);
+		return "redirect:/masar/businessTrails";
+	}
+	@RequestMapping("/masar/businessTrails/{id}/cancel")
+	public String unJoinTrail(Model model,@PathVariable ("id") Long id,Principal principal) {
+		BusinessTrail trail = businessTrailService.findbusinessTrailById(id);
+		String username = principal.getName();
+		User user = userService.findByUsername(username);
+		businessTrailService.unJoinBusinessTrail(trail, user);
+		return "redirect:/masar/businessTrails";
 	}
 	
 	@RequestMapping("/masar/trails/search")
@@ -71,6 +104,13 @@ public class TrailController {
 			model.addAttribute("trails", searchTrails);
 			List<Trail> allTrails = trailService.allTrails();
 			model.addAttribute("allTrails", allTrails);
+			List <String> locations = new ArrayList<String>() ;
+			for (Trail trail : allTrails) {
+				if(!locations.contains(trail.getLocation())) {
+					locations.add(trail.getLocation());
+				}
+			}
+			model.addAttribute("locations", locations);
 			return "searchTrails.jsp";
 	}
 	@RequestMapping("/masar/trails/filter_category")
@@ -101,22 +141,24 @@ public class TrailController {
 		model.addAttribute("trail", trail);
 		String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
-		return "TrailDetails.jsp";
+		return "trailsDetails.jsp";
 	}
 	
-	@PostMapping("/masar/trails/{id}")
+	
+	@PostMapping("/masar/trails/{id}/comment")
 	public String addComment(Model model,@Valid @ModelAttribute("comment") Comment comment,BindingResult result,@PathVariable ("id") Long id,Principal principal) {
 		if (result.hasErrors()) {
 			String username = principal.getName();
 	        model.addAttribute("currentUser", userService.findByUsername(username));
 	        Trail trail = trailService.findTrailById(id);
 			model.addAttribute("trail", trail);
-			return "TrailDetails.jsp";
+			return "trailsDetails.jsp";
 		}else {
 			commentService.creatComment(comment);
 			return "redirect:/masar/trails/"+id;
 		}
 	}
+	
 	
 	//Admins
 	
@@ -124,7 +166,7 @@ public class TrailController {
 	public String allAdminTrails(Model model) {
 		List<Trail> allTrails = trailService.allTrails();
 		model.addAttribute("allTrails", allTrails);
-		return "AdminTrails.jsp";
+		return "adminTrails.jsp";
 	}
 	
 	@RequestMapping("/admin/trails/new")
@@ -172,9 +214,8 @@ public class TrailController {
 	@RequestMapping("/admin/trails/{id}/delete")
 	public String deleteEvent(@PathVariable("id")Long id) {
 		trailService.delete(id);
-		return "redirect:/admin/trails/"+id;
+		return "redirect:/admin/trails/";
 	}
-	
 	
 	
 }

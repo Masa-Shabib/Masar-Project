@@ -94,12 +94,11 @@ public class Users {
         return "loginPage.jsp";
     }
     
-    @RequestMapping(value = "/home")
+    @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
         // 1
-        String username = principal.getName();
-        model.addAttribute("currentUser", userService.findByUsername(username));
-        return "homePage.jsp";
+        model.addAttribute("currentUser", principal);
+        return "redirect:/masar";
     }
     
     

@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <meta charset="ISO-8859-1">
-<title>Edit this trail</title>
+<title>Add a new Trail</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
@@ -82,52 +82,23 @@
 			<div class="col-6 offset-3">
 				<div class="row mb-5">
 					<div class="col">
-						<h3>Edit ${trail.name}</h3>
+						<h3>Create a new Business trail</h3>
 
 					</div>
 				</div>
 				<div class="row">
 					<div class="col text-start">
-						<form:form action="/admin/trails/${trail.id}/edit" method="post" modelAttribute="trail">
-						<input type="hidden" name="_method" value="put">
-						<form:input type="hidden" path="admin" value="${currentUser.id}"/> 
-						<form:input type="hidden" path="id" value="${trail.id}"/>
+
+
+						<form:form action="/client/businesstrails/new" method="post" modelAttribute="trail">
+						<form:input type="hidden" path="client" value="${currentUser.id}"/> 
 							<div class="form-floating mb-3">
 								<form:input type="text" class="form-control" id="name"
 								path="name" placeholder="name" />
 								<form:label path="name" for="floatingInput">name</form:label>
 								<form:errors class="text-danger" path="name" />
 							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="location"
-								path="location" placeholder="Location" rows="3"></form:input>
-								<form:label path="location" for="floatingInput">Location</form:label>
-								<form:errors class="text-danger" path="location" />
-							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="longitude"
-								path="longitude" placeholder="Trail Start Longitude" rows="3"></form:input>
-								<form:label path="longitude" for="floatingInput">Trail Start Longitude</form:label>
-								<form:errors class="text-danger" path="longitude" />
-							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="latitude"
-								path="latitude" placeholder="Trail Start Latitude" rows="3"></form:input>
-								<form:label path="latitude" for="floatingInput">Trail Start Latitude</form:label>
-								<form:errors class="text-danger" path="latitude" />
-							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="endLongitude"
-								path="endLongitude" placeholder="Trail End Longitude" rows="3"></form:input>
-								<form:label path="endLongitude" for="floatingInput">Trail End Longitude</form:label>
-								<form:errors class="text-danger" path="endLongitude" />
-							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="endLatitude"
-								path="endLatitude" placeholder="Trail End Latitude" rows="3"></form:input>
-								<form:label path="endLatitude" for="floatingInput">Trail End Latitude</form:label>
-								<form:errors class="text-danger" path="endLatitude" />
-							</div>
+							
 							<div class="form-floating mb-3">
 								<form:select class="form-control" type="text" id="category"
 								path="category" placeholder="Category" rows="3">
@@ -139,45 +110,40 @@
 								<form:label path="category" for="floatingInput">Category</form:label>
 								<form:errors class="text-danger" path="category" />
 							</div>
+							
 							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="distance"
-								path="distance" placeholder="Distance" rows="3" />
-								<form:label path="distance" for="floatingInput">Distance</form:label>
-								<form:errors class="text-danger" path="distance" />
+								<form:select class="form-control" type="text" id="relatedTrail"
+								path="relatedTrail" placeholder="Category" rows="3">
+								<c:forEach var="trail" items="${allTrails}">
+								<form:option value="${trail.id}"><c:out value="${trail.name}"></c:out></form:option>
+								</c:forEach>
+								</form:select>
+								<form:label path="relatedTrail" for="floatingInput">RelatedTrail</form:label>
+								<form:errors class="text-danger" path="relatedTrail" />
 							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="imgUrl"
-								path="imgUrl" placeholder="Image URL" rows="3" />
-								<form:label path="distance" for="floatingInput">Image URL</form:label>
-								<form:errors class="text-danger" path="imgUrl" />
-							</div>
+							
 							<div class="form-floating mb-3">
 								<form:textarea class="form-control" id="description"
 								path="description" placeholder="Description" rows="3"></form:textarea>
 								<form:label path="description" for="floatingInput">Description</form:label>
 								<form:errors class="text-danger" path="description" />
 							</div>
+							
+							<div class="form-floating mb-3">
+								<form:input class="form-control" type="text" id="price"
+								path="price" placeholder="Price" rows="3" />
+								<form:label path="price" for="floatingInput">Price</form:label>
+								<form:errors class="text-danger" path="price" />
+							</div>
+							
 							<button type="submit" class="btn btn-success float-end ms-2">Submit</button>
 							<a href="/masar" class="btn btn-danger float-end">Cancel</a>
 						</form:form>
-					</div>
-					<div class="row text-start ">
-						<div class="col ">
-							<form:form action="/trails/${trail.id}/delete" method="post">
-								<input type="hidden" name="_method" value="delete">
-								<button type="submit" class="btn btn-sm btn-danger">Delete
-									!</button>
-							</form:form>
-						</div>
 					</div>
 
 				</div>
 			</div>
 		</div>
 	</div>
-	<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
-		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
-        <p style="color: gray;">Copyright  2022 Private Ownership - Axsos Academy - Ramllah, Palestine</p>
-	  </footer >
 </body>
 </html>

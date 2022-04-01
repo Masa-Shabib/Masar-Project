@@ -9,6 +9,7 @@
 <title>Admin Page</title>
 </head>
 <body>
+	
     <h1>Welcome to the Admin Page <c:out value="${currentUser.username}"></c:out></h1>
     
     <form id="logoutForm" method="POST" action="/logout">
