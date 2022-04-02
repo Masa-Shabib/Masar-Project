@@ -7,7 +7,7 @@ Masar is built to enrich our lives and enlarge our understanding of Palestinian 
 while creating for us a sense of continuity through outdoor trips to historical landmarks which strengthens
 the roots of Palestinian identity, through observing the beauty of nature in our beloved holy homeland.
 
-![Jobpal logo](https://github.com/mussabtafal/Jobpal_Project/blob/master/readme_img/logo.png)
+![masar_logo](readme_img/03.JPG)
 
 ## Programing Languages, Frameworks and Libraries used:
 HTML, CSS, Java, JavaScript, STS , Spring Security, BootStrap , Trello, GitHub, Jquery, Google Map API.
@@ -21,7 +21,7 @@ SQLITE3
 ## Some Screenshots of the Website: 
 ![screen_one](readme_img/01.JPG)
 ![screen_Two](readme_img/02.JPG)
-![screen_Three](readme_img/03.JPG)
+
 ![screen_Four](readme_img/04.JPG)
 ![screen_Five](readme_img/05.JPG)
 ![screen_Six](readme_img/06.JPG)
