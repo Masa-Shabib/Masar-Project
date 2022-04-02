@@ -38,6 +38,9 @@ public class TrailService {
 		return trailRepository.findByLocationContains(location);
 	}
 	
+
+	
+
 	public List<Trail> findTrailsByCategory(String category){
 		return trailRepository.findByCategoryContains(category);
 	}
@@ -63,9 +66,9 @@ public class TrailService {
         return trailRepository.save(editTrail);
     }
 	
-	
-	public void deleteTrail(long id) {
-		trailRepository.deleteById(id);
-	}
+	public void delete(Long id) {
+		Trail deleteTrail = trailRepository.findById(id).orElse(null); 
+		trailRepository.delete(deleteTrail);
+      }
 	
 }

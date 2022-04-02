@@ -19,7 +19,6 @@ public class CommentService {
 
 
 	public Comment creatComment(Comment comment ) {
-		comment.setId(null);
 		return commentRepository.save(comment);
 	}
 	

@@ -14,12 +14,8 @@ public class BusinessTrailService {
 
 	@Autowired
 	private BusinessTrailRepository businessTrailRepository;
-	@Autowired
-	private UserService userService;
-	public BusinessTrailService(BusinessTrailRepository businessTrailRepository, UserService userService) {
-		
+	public BusinessTrailService(BusinessTrailRepository businessTrailRepository) {
 		this.businessTrailRepository = businessTrailRepository;
-		this.userService = userService;
 	}
 
 	public List <BusinessTrail> getAllBusinessTrail(){

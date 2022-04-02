@@ -140,6 +140,8 @@ public class TrailController {
 			model.addAttribute("locations", locations);
 			return "searchTrails.jsp";
 	}
+	
+
 	@RequestMapping("/masar/trails/filter_category")
 	public String filter1Trails(Model model,@RequestParam("t_category") String category,Principal principal) {
 			String username = principal.getName();
@@ -307,7 +309,7 @@ public class TrailController {
 	
 	@RequestMapping("/admin/trails/{id}/delete")
 	public String deleteEvent(@PathVariable("id")Long id) {
-		trailService.deleteTrail(id);
+		trailService.delete(id);
 		return "redirect:/admin/trails/";
 	}
 	

@@ -54,25 +54,9 @@
       section{height:100vh;}
 
       .carousel-item:nth-child(1) {
-        background-image: url('https://i.ibb.co/GCkV5JG/IMG-20211217-142604-1.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
+        
       }
 
-      .carousel-item:nth-child(2) {
-        background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-      }
-
-      .carousel-item:nth-child(3) {
-        background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-      }
       #join{
        background-image: url('https://i.ibb.co/5xzNg8D/IMG-20211015-163617.jpg');
         background-repeat: no-repeat;
@@ -83,7 +67,7 @@
       }
 	
 	#vision{
-       background-image: url('https://i.ibb.co/GCkV5JG/IMG-20211217-142604-1.jpg');
+       background-image: url('https://images.pexels.com/photos/221125/pexels-photo-221125.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -91,6 +75,10 @@
    		margin-right: calc(50% - 49.5vw);
         
         
+      }
+      
+      video{
+      
       }
 	
       /* Height for devices larger than 576px */
@@ -224,7 +212,10 @@
         <div style="height: 112vh " class="carousel-item active">
           <div style="height: 112vh;background-color: rgba(0, 0, 0, 0.1);"   class="mask" >
             <div class="d-flex justify-content-center align-items-center h-100">
-              <div class="text-white text-center  mt-5">
+            <video autoplay muted loop width="1950" height="1100"  >
+            <source src="/video/nature.mp4" type="video/mp4"/>
+            </video>
+              <div style="position:absolute; top:60%" class="text-white text-center">
                 <h1 class="mb-3">Explore Existing Trails By Your Favourite Location</h1>
                <form class="mt-4"  action="/masar/trails/search" >
                 <div class="form-floating d-flex mt-3 justify-content-center">
@@ -233,15 +224,18 @@
                     <button class="btn btn-outline-light btn-lg m-2" role="button" rel="nofollow" target="_blank">Explore</button>
                	</div>
                </form>		
+
 				<form class="mt-4"  action="/masar/trails/luckyHit" >
                 <div class="form-floating d-flex mt-3 justify-content-center">
                     <button class="btn btn-outline-light btn-lg m-2" role="button" rel="nofollow" target="_blank">Lucky Hit !!</button>
                	</div>
                </form>	
+
               </div>
             </div>
           </div>
         </div>
+        
 
         <!-- Single item -->
         <div class="carousel-item">
@@ -338,7 +332,7 @@
           <div class="row">
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://i.ibb.co/Nnxh6pg/IMG-20210402-093503.jpg" class="img-fluid" style="height:350px; width:600px" />
+                <img src="https://i.ibb.co/Nnxh6pg/IMG-20210402-093503.jpg" class="img-fluid" style="height:330px; width:600px" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -379,7 +373,7 @@
             
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://i.ibb.co/8KQswPg/IMG-20211105-112815.jpg" class="img-fluid"  style="height:350px; width:600px"/>
+                <img src="https://i.ibb.co/8KQswPg/IMG-20211105-112815.jpg" class="img-fluid"  style="height:330px; width:600px"/>
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -401,12 +395,12 @@
       
       
       
-      <div class="d-flex justify-content-center align-items-center h-100" >
-         <div class="text-dark text-center">
+      <div class="d-flex justify-content-center align-items-center h-100"  style="background-color: rgba(0, 0, 0, 0.3);"   class="mask">
+         <div class="text-light text-center">
             <h2 class="mb-3">"A walk in nature walks the soul back home." - MARY DAVIS</h2>
             
-            <a class="btn btn-outline-secondary" href="/registration"  >Register as a Hiker</a>
-            <a class="btn btn-outline-secondary" href="/registration/client"  >Register as a Guide</a>
+            <a class="btn btn-outline-dark text-light" href="/registration"  >Register as a Hiker</a>
+            <a class="btn btn-outline-dark text-light" href="/registration/client"  >Register as a Guide</a>
              
  		</div>
       </div>
@@ -419,12 +413,12 @@
       <hr class="my-5" />
       <!--Section: Content-->
       
-      <section id="vision">
-      <div class="d-flex justify-content-center align-items-center h-100">
-         <div class="text-dark text-center">
+      <section id="vision" >
+      <div class="d-flex justify-content-center align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.5);"   class="mask">
+         <div class="text-light text-center" >
             <h2 style="font-size:50px" class="mb-3">Our Vision</h2>
             
- 		<img style="width:800px;height:300px" alt="Masar Logo" src="https://i.ibb.co/L9TyH4d/masar.png">
+ 		<img style="width:800px;height:300px" alt="Masar Logo" src="https://i.ibb.co/3mwbKsD/masar2.png">
  		
            <p style= "font-size:25px;font-weight:500">
            Masar is built to enrich our lives and enlarge our understanding of Palestinian history,<br>
@@ -453,8 +447,12 @@
   <!--Main layout-->
 
   <!--Footer-->
-  
-
+  <%--	<div>    
+  		<video autoplay muted loop width="320" height="240"  >
+            <source src="/video/nature.mp4" type="video/mp4"/>
+        </video>
+	</div>
+	--%>
     <footer>
 
     <!-- Copyright -->
