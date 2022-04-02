@@ -47,8 +47,9 @@ public class TrailController {
 	@RequestMapping("/masar")
 	public String landing(Model model , Principal principal) {
         model.addAttribute("currentUser", principal);
+        List<Trail> trails = trailService.top3();
+		model.addAttribute("trails", trails);
 			return "landingPage.jsp" ;
-
 	}
 	
 	
@@ -68,14 +69,40 @@ public class TrailController {
 		return "allTrails.jsp";
 	}
 	
-	@RequestMapping("/masar/businessTrails")
-	public String businessTrails(Model model,Principal principal) {
+	@RequestMapping("/masar/trails/luckyHit")
+	public String lucky(Model model,Principal principal) {
 		String username = principal.getName();
         model.addAttribute("currentUser", userService.findByUsername(username));
         List<Trail> allTrails = trailService.allTrails();
 		model.addAttribute("allTrails", allTrails);
+		List <String> locations = new ArrayList<String>() ;
+		for (Trail trail : allTrails) {
+			if(!locations.contains(trail.getLocation())) {
+				locations.add(trail.getLocation());
+			}
+		}
+		model.addAttribute("locations", locations);
+		int random_int = (int)Math.floor(Math.random()*(locations.size()-1-0+1)+0);
+		String location= locations.get(random_int);
+		model.addAttribute("location", location);
+		List<Trail> searchTrails = trailService.findTrailsByLocation(location);
+		model.addAttribute("trails", searchTrails);
+		return "luckyLocation.jsp";
+	}
+	
+	@RequestMapping("/masar/businessTrails")
+	public String businessTrails(Model model,Principal principal) {
+		String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
 		List<BusinessTrail> bTrails = businessTrailService.getAllBusinessTrail();
 		model.addAttribute("bTrails", bTrails);
+		List <String> locations = new ArrayList<String>() ;
+		for (BusinessTrail trail : bTrails) {
+			if(!locations.contains(trail.getLocation())) {
+				locations.add(trail.getLocation());
+			}
+		}
+		model.addAttribute("locations", locations);
 		return "businessTrailsGuests.jsp";
 	}
 	
@@ -114,31 +141,7 @@ public class TrailController {
 			return "searchTrails.jsp";
 	}
 	
-	
-	@RequestMapping("/masar/trails/search/random")
-	public String randomTrail(Model model,Principal principal) {
-		String username = principal.getName();
-		model.addAttribute("currentUser", userService.findByUsername(username));
-		Long randomTrailFind = trailService.findTrailsByRandomLocation();
-		Trail randomTrail= trailService.findTrailById(randomTrailFind);
-		model.addAttribute("trail", randomTrail);
-		List<Trail> allTrails = trailService.allTrails();
-		model.addAttribute("allTrails", allTrails);
-		List <String> locations = new ArrayList<String>() ;
-		for (Trail trail : allTrails) {
-			if(!locations.contains(trail.getLocation())) {
-				locations.add(trail.getLocation());
-			}
-		}
-		model.addAttribute("locations", locations);
-		return "searchTrailsRandom.jsp";
-	}
-	
-	
-	
-	
-	
-	
+
 	@RequestMapping("/masar/trails/filter_category")
 	public String filter1Trails(Model model,@RequestParam("t_category") String category,Principal principal) {
 			String username = principal.getName();
@@ -147,6 +150,13 @@ public class TrailController {
 			model.addAttribute("trails", searchTrails);
 			List<Trail> allTrails = trailService.allTrails();
 			model.addAttribute("allTrails", allTrails);
+			List <String> locations = new ArrayList<String>() ;
+			for (Trail trail : allTrails) {
+				if(!locations.contains(trail.getLocation())) {
+					locations.add(trail.getLocation());
+				}
+			}
+			model.addAttribute("locations", locations);
 			return "searchTrails.jsp";
 	}
 	@RequestMapping("/masar/trails/filter_location")
@@ -157,7 +167,67 @@ public class TrailController {
 			model.addAttribute("trails", searchTrails);
 			List<Trail> allTrails = trailService.allTrails();
 			model.addAttribute("allTrails", allTrails);
+			List <String> locations = new ArrayList<String>() ;
+			for (Trail trail : allTrails) {
+				if(!locations.contains(trail.getLocation())) {
+					locations.add(trail.getLocation());
+				}
+			}
+			model.addAttribute("locations", locations);
 			return "searchTrails.jsp";
+
+	}
+	
+	@RequestMapping("/masar/businessTrails/search")
+	public String searchBTrails(Model model,@RequestParam("location") String location,Principal principal) {
+		String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
+		List<BusinessTrail> searchTrails = businessTrailService.findTrailsByLocation(location);
+			model.addAttribute("trails", searchTrails);
+			List<BusinessTrail> bTrails = businessTrailService.getAllBusinessTrail();
+			model.addAttribute("bTrails", bTrails);
+			List <String> locations = new ArrayList<String>() ;
+			for (BusinessTrail trail : bTrails) {
+				if(!locations.contains(trail.getLocation())) {
+					locations.add(trail.getLocation());
+				}
+			}
+			model.addAttribute("locations", locations);
+			return "searchBTrails.jsp";
+	}
+	@RequestMapping("/masar/businessTrails/filter_category")
+	public String filter1BTrails(Model model,@RequestParam("t_category") String category,Principal principal) {
+			String username = principal.getName();
+	        model.addAttribute("currentUser", userService.findByUsername(username));
+			List<BusinessTrail> searchTrails = businessTrailService.findTrailsByCategory(category);
+			model.addAttribute("trails", searchTrails);
+			List<BusinessTrail> bTrails = businessTrailService.getAllBusinessTrail();
+			model.addAttribute("bTrails", bTrails);
+			List <String> locations = new ArrayList<String>() ;
+			for (BusinessTrail trail : bTrails) {
+				if(!locations.contains(trail.getLocation())) {
+					locations.add(trail.getLocation());
+				}
+			}
+			model.addAttribute("locations", locations);
+			return "searchBTrails.jsp";
+	}
+	@RequestMapping("/masar/businessTrails/filter_location")
+	public String filterBTrails(Model model,@RequestParam("t_location") String location,Principal principal) {
+			String username = principal.getName();
+	        model.addAttribute("currentUser", userService.findByUsername(username));
+			List<BusinessTrail> searchTrails = businessTrailService.findTrailsByLocation(location);
+			model.addAttribute("trails", searchTrails);
+			List<BusinessTrail> bTrails = businessTrailService.getAllBusinessTrail();
+			model.addAttribute("bTrails", bTrails);
+			List <String> locations = new ArrayList<String>() ;
+			for (BusinessTrail trail : bTrails) {
+				if(!locations.contains(trail.getLocation())) {
+					locations.add(trail.getLocation());
+				}
+			}
+			model.addAttribute("locations", locations);
+			return "searchBTrails.jsp";
 
 	}
 	

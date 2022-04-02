@@ -79,8 +79,8 @@
 		    </nav>
 		<div class="container-lg-fluid m-3 p-3 border" style="height: 100vh;">
 		<div class="row justify-content-between mb-4">
-			<div class="col-6 p-4"><h1 style="font-size: 55px;" >Palestinian Trails to join </h1></div>
-			<div class="col-4 p-4"><form class="d-flex mt-3" action="/masar/trails/search" >
+			<div class="col-6 p-4"><h1 style="font-size: 55px;" >Trails to join </h1></div>
+			<div class="col-4 p-4"><form class="d-flex mt-3" action="/masar/businessTrails/search" >
 					<input class="form-control me-2" name="location" type="search" placeholder="Search by location" id="trails" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				</form></div>
@@ -88,7 +88,7 @@
 		<div class="row p-3 ">
 			<div class="col-2 p-4" style="border-right:1px solid gray">
 			
-				<form action="/masar/trails/filter_category" >
+				<form action="/masar/businessTrails/filter_category" >
 								<p style="font-size: 20px;"><b>filter by Category</b></p>
 								<input type="radio" name="t_category" value="" checked style="display: none;">
 								
@@ -111,10 +111,10 @@
 								
 								<button type="submit" class="btn btn-outline-secondary mt-4 ">Apply filter</button>
 							</form>
-							<form action="/masar/trails/filter_location" >
+							<form action="/masar/businessTrails/filter_location" >
 								<p class="mt-3" style="font-size: 20px;"><b>filter by Location</b></p>
 								<input type="radio" name="t_location" value="" checked style="display: none;">
-								 <c:forEach var="item" items="${allTrails}">
+								 <c:forEach var="item" items="${bTrails}">
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="t_location" value="${item.location}"
 											id="flexRadioDefault1">
@@ -134,8 +134,19 @@
 											  <h5 class="card-header">Added by <c:out value="${item.client.username}"></c:out></h5>
 											  <div class="card-body">
 											    <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
-											    <p class="card-text">Description: <c:out value="${item.description}"></c:out></p>
-											    <a href="/masar/trails/${item.relatedTrail}" class="btn btn-outline-secondary ">Details</a>
+											     <p class="card-text"><strong>Location: </strong><c:out value="${item.location}"></c:out></p>
+											    <p class="card-text"><strong>Description: </strong><c:out value="${item.description}"></c:out></p>
+											    <p class="card-text"><strong>Category: </strong><c:out value="${item.category}"></c:out></p>
+											    	<p><strong>Price: </strong> <c:out value="${item.price}"></c:out> NIS</p>
+											     <c:choose>
+					                                <c:when test="${item.relatedTrail == 0}">
+					                                    <a href="/masar/trails" class="btn btn-outline-secondary ">Details</a>
+					                                </c:when>
+					                                <c:otherwise>
+					                                     <a href="/masar/trails/${item.relatedTrail}" class="btn btn-outline-secondary ">Details</a>
+					                                </c:otherwise>
+					                            </c:choose>
+											   
 	
 		                            <c:set var="attending" value="${false}"/>
 		                            <c:forEach items="${item.joinedGuests}" var="attendee">
@@ -155,7 +166,8 @@
 		                            </c:choose>
 											  </div>
 											  <div class="card-footer text-muted">
-											    2 days ago
+											    <p class="card-text">Added on:
+											    <fmt:formatDate value="${item.createdAt}" type="date" pattern="h:m aa  MMM dd"/></p>
 											  </div>
 											</div>
 							            </div>

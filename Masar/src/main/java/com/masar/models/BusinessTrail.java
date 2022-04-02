@@ -32,12 +32,14 @@ public class BusinessTrail {
     @Size(min=1)
     private String category;
     
-    @Size(min=10)
+    @Size(min=10 , max= 700)
     private String description;
     
     @Min(value=0)
     private double price;
     
+    @Size(min=3)
+    private String location;
     
     private Long relatedTrail;
     
@@ -68,14 +70,19 @@ public class BusinessTrail {
 
 	public BusinessTrail() {
 	}
-	public BusinessTrail(@Size(min = 3) String name, @Size(min = 1) String category, @Size(min = 10) String description,
-			@Size(min = 10) double price, @Size(min = 1) Long relatedTrail) {
+	
+	public BusinessTrail(@Size(min = 3) String name, @Size(min = 1) String category,
+			@Size(min = 10, max = 700) String description, @Min(0) double price, @Size(min = 3) String location,
+			Long relatedTrail) {
+		super();
 		this.name = name;
 		this.category = category;
 		this.description = description;
 		this.price = price;
+		this.location = location;
 		this.relatedTrail = relatedTrail;
 	}
+	
 	public Long getId() {
 		return id;
 	}
@@ -105,6 +112,13 @@ public class BusinessTrail {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public Long getRelatedTrail() {
 		return relatedTrail;

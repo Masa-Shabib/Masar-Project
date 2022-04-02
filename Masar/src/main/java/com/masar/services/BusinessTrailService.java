@@ -30,6 +30,14 @@ public class BusinessTrailService {
 		return businessTrailRepository.findByclient(user);
 	}
 	
+	public List<BusinessTrail> findTrailsByLocation(String location){
+		return businessTrailRepository.findByLocationContains(location);
+	}
+	
+	public List<BusinessTrail> findTrailsByCategory(String category){
+		return businessTrailRepository.findByCategoryContains(category);
+	}
+	
 	public BusinessTrail findbusinessTrailById(Long id) {
 		Optional<BusinessTrail> optionalbusinessTrail = businessTrailRepository.findById(id);
         if(optionalbusinessTrail.isPresent()) {
@@ -50,6 +58,7 @@ public class BusinessTrailService {
         editTrail.setCategory(trail.getCategory());
         editTrail.setDescription(trail.getDescription());
         editTrail.setPrice(trail.getPrice());
+        editTrail.setLocation(trail.getLocation());
         return businessTrailRepository.save(editTrail);
     }
 	

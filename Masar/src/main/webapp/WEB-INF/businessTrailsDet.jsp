@@ -40,30 +40,13 @@
                     
 						<c:set var="user2" value="2"/>
 						<c:set var="user3" value="3"/>
-								 <c:forEach var="item" items="${currentUser.roles}">
-							<c:choose>
-							    <c:when test="${(item.id == user3)}">
 							         <li class="nav-item">
 				                        <a class="nav-link" href="/client/businessTrails/new" style="font-size: 20px;">Add Trail</a>
 				                    </li>
 				                    <li class="nav-item">
 				                        <a class="nav-link" href="/client/businessTrails" style="font-size: 20px;">Your Trails</a>
 				                    </li>
-								</c:when>   
-							    <c:otherwise>
-							   
-							    	<c:if test="${item.id == user2}">
-							    		
-		                             <li class="nav-item">
-				                        <a class="nav-link" href="/admin/trails/new" style="font-size: 20px;">Add Trail</a>
-				                    </li>
-				                    <li class="nav-item">
-				                        <a class="nav-link" href="/admin/trails" style="font-size: 20px;">Your Trails</a>
-				                    </li>
-							    		</c:if>
-                        			</c:otherwise>
-							</c:choose>
-									</c:forEach>
+
 							 <li class="nav-item">
 				                 <form id="logoutForm" method="POST" action="/logout">
 								        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -74,13 +57,15 @@
 		            </div>
 		        </div>
 		    </nav>
-<div class="container ">
+<div class="container "  style="height:75vh">
 
 				<div class="row my-5 mb-1">
 			<div class="col-6 ">
 				<div class="row mb-5">
 					<div class="col">
 						<h4>Trail Name: ${businessTrail.name}</h4>
+						<p>${businessTrail.description}</p>
+						<p>Number of joined hikers: ${joinedUsers.size()} </p>
 					</div>
 					</div>
 					</div>
@@ -94,18 +79,15 @@
 				<table class="table table-bordered text-center">
 	                <thead>
 	                    <tr>
-	                        <th scope="col" class="col-4">Joined Guests</th>
-	                        
+	                        <th scope="col" class="col-4">Joined Hikers</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
 	                    <c:forEach var="joinedUser" items="${joinedUsers}">
 	                        <tr>
 	                            <td>
-	                                <c:out value="${joinedUser.username}"></c:out> />
+	                                <c:out value="${joinedUser.username}"></c:out> 
 	                            </td>
-	                           
-	                            
 	                        </tr>
 	                    </c:forEach>
 	                </tbody>
@@ -114,8 +96,8 @@
 	            </div>
 						</div>
 			<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
-		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
-        <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
-	  </footer >
+				<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
+		        <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
+			 </footer >
 </body>
 </html>

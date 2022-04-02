@@ -79,14 +79,14 @@
 <div class="container-lg-fluid m-3 p-3 border" style="height: 100vh;">
 		<div class="row justify-content-between mb-4">
 			<div class="col-4 p-4"><h1 style="font-size: 55px;" >Palestinian Trails </h1></div>
-			<div class="col-4 p-4"><form class="d-flex mt-3" action="/masar/trails/search" >
+			<div class="col-4 p-4"><form class="d-flex mt-3" action="/masar/businessTrails/search" >
 					<input class="form-control me-2" name="location" type="search" placeholder="Search by location" id="trails" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				</form></div>
 		</div>
 		<div class="row p-3 ">
 			<div class="col-2 p-4" style="border-right:1px solid gray">
-				<form action="/masar/trails/filter_category" >
+				<form action="/masar/businessTrails/filter_category" >
 								<p style="font-size: 20px;"><b>filter by Category</b></p>
 								<input type="radio" name="t_category" value="" checked style="display: none;">
 								
@@ -109,7 +109,7 @@
 								
 								<button type="submit" class="btn btn-outline-secondary mt-4 ">Apply filter</button>
 							</form>
-							<form action="/masar/trails/filter_location" >
+							<form action="/masar/businessTrails/filter_location" >
 								<p class="mt-3" style="font-size: 20px;"><b>filter by Location</b></p>
 								<input type="radio" name="t_location" value="" checked style="display: none;">
 								 <c:forEach var="item" items="${locations}">
@@ -125,31 +125,49 @@
 							</form>
 			</div>
 			<div class="col-10">
-				 <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
-					
+				 <div class="row row-cols-1 row-cols-md-2 row-cols-sm-2 g-4">
+					<c:forEach var="item" items="${trails}">
 							            <div class="col">
-							              <div class="card h-100">
-							                <img
-							                  src="${trail.imgUrl}" class="card-img-top h-75" alt="Trail Image"/>
-							                <div class="card-body">
-							                  <h5 class="card-title"><c:out value="${trail.name}"></c:out> Trail</h5>
-							                  <p class="card-text">Distance: <c:out value="${trail.distance}"></c:out></p>
-							                  <ul class="list-group list-group-flush">
-							                    <li class="list-group-item">
-							                      <a
-							                        href="/masar/trails/${trail.id}"
-							                        class="btn btn-outline-secondary "
-							                        >Details</a
-							                      >
-							                    </li>
-							                    <li class="list-group-item">
-							                      <c:out value="${trail.location}"></c:out>
-							                    </li>
-							                  </ul>
-							                </div>
-							              </div>
+							            	<div class="card h-100"  >
+											  <h5 class="card-header">Added by <c:out value="${item.client.username}"></c:out></h5>
+											  <div class="card-body">
+											    <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
+											     <p class="card-text">Location: <c:out value="${item.location}"></c:out></p>
+											    <p class="card-text">Description: <c:out value="${item.description}"></c:out></p>
+											    <p class="card-text">Category: <c:out value="${item.category}"></c:out></p>
+											     <c:choose>
+					                                <c:when test="${item.relatedTrail == 0}">
+					                                    <a href="/masar/trails" class="btn btn-outline-secondary ">Details</a>
+					                                </c:when>
+					                                <c:otherwise>
+					                                     <a href="/masar/trails/${item.relatedTrail}" class="btn btn-outline-secondary ">Details</a>
+					                                </c:otherwise>
+					                            </c:choose>
+											   
+	
+		                            <c:set var="attending" value="${false}"/>
+		                            <c:forEach items="${item.joinedGuests}" var="attendee">
+		                            <c:set var="user1" value="${attendee.id}"/>
+										<c:set var="user2" value="${currentUser.id}"/>
+			                            <c:if test="${user1 == user2}">
+		                                    <c:set var="attending" value="${true}"/>
+		                                </c:if>
+		                            </c:forEach>
+		                            <c:choose>
+		                                <c:when test="${attending == false}">
+		                                    <a href="/masar/businessTrails/${item.id}/join" class="btn btn-outline-secondary ">Join</a>
+		                                </c:when>
+		                                <c:otherwise>
+		                                    <a href="/masar/businessTrails/${item.id}/cancel" class="btn btn-outline-secondary ">cancel</a>
+		                                </c:otherwise>
+		                            </c:choose>
+											  </div>
+											  <div class="card-footer text-muted">
+											    <p class="card-text">Added on: <c:out value="${item.createdAt}"></c:out></p>
+											  </div>
+											</div>
 							            </div>
-									
+									</c:forEach>
 				</div>
 			</div>
 		</div>

@@ -44,8 +44,8 @@ function initMap() {
 	}
 
 	const locations = [
-	  { lat:  ${trail.longitude} , lng: ${trail.latitude}},
-	  { lat:  ${trail.endLongitude} , lng: ${trail.endLatitude}},
+	  { lat:  ${trail.longitude} , lng: ${trail.latitude} },
+	  { lat:  ${trail.endLongitude} , lng: ${trail.endLatitude} },
 	  
 	];
 
@@ -158,6 +158,7 @@ body {
 	<p><strong>Category:</strong> <c:out value="${trail.category}"></c:out></p>
 	<p><strong>Distance: </strong> <c:out value="${trail.distance}"></c:out></p>
 	<p><strong>Description: </strong> <c:out value="${trail.description}"></c:out></p>
+
    </div>
 </div>
 <div class = "row justify-content-around ">
@@ -172,7 +173,7 @@ body {
   <button type="submit" class="btn btn-primary mt-3">Post</button>
   </form:form>
   	<c:forEach var="item" items="${trail.trailComments}">
-		<p><c:out value="${item.text}"></c:out></p>
+		<p><c:out value="${item.commentUser.username}"></c:out> - <c:out value="${item.text}"></c:out></p>
 	</c:forEach>
 </div>
 </div>
