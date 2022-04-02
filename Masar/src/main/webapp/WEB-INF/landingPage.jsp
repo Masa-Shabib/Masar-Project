@@ -54,25 +54,9 @@
       section{height:100vh;}
 
       .carousel-item:nth-child(1) {
-        background-image: url('https://i.ibb.co/GCkV5JG/IMG-20211217-142604-1.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
+        
       }
 
-      .carousel-item:nth-child(2) {
-        background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-      }
-
-      .carousel-item:nth-child(3) {
-        background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center center;
-      }
       #join{
        background-image: url('https://i.ibb.co/5xzNg8D/IMG-20211015-163617.jpg');
         background-repeat: no-repeat;
@@ -91,6 +75,10 @@
    		margin-right: calc(50% - 49.5vw);
         
         
+      }
+      
+      video{
+      
       }
 	
       /* Height for devices larger than 576px */
@@ -221,10 +209,17 @@
       <!-- Inner -->
       <div style="height:112vh" class="carousel-inner">
         <!-- Single item -->
+        
+        
+        
         <div style="height: 112vh " class="carousel-item active">
+        
           <div style="height: 112vh;background-color: rgba(0, 0, 0, 0.1);"   class="mask" >
             <div class="d-flex justify-content-center align-items-center h-100">
-              <div class="text-white text-center">
+            <video autoplay muted loop width="1600" height="1000"  >
+            <source src="/video/nature.mp4" type="video/mp4"/>
+            </video>
+              <div style="position:absolute; top:500px" class="text-white text-center">
                 <h1 class="mb-3">Explore Existing Trails By Your Favourite Location</h1>
                <form class="mt-4"  action="/masar/trails/search" >
                 <div class="form-floating d-flex mt-3 justify-content-center">
@@ -244,6 +239,7 @@
             </div>
           </div>
         </div>
+        
 
         <!-- Single item -->
         <div class="carousel-item">
@@ -450,8 +446,12 @@
   <!--Main layout-->
 
   <!--Footer-->
-  
-
+  <%--	<div>    
+  		<video autoplay muted loop width="320" height="240"  >
+            <source src="/video/nature.mp4" type="video/mp4"/>
+        </video>
+	</div>
+	--%>
     <footer>
 
     <!-- Copyright -->
