@@ -56,14 +56,20 @@
 		            </div>
 		        </div>
 		    </nav>
- <div class="row mt-5">
+ <div class="row mt-5" style="height:100vh">
 		<div class="col-8 offset-2">
-			<div class="row align-items-center">
-				<div class="col mb-4">
+			
+			<div class="row align-items-around">
+				<div class="col-10 mb-4">
 					<h4>
 						All Trails added by admins:
 					</h4>
 				</div>
+			
+						<div class="col-2">
+							<a class="btn btn-success" href="/admin/trails/new">Add a New Trail</a>
+						</div>
+				
 			</div>
 			<table class="table table-bordered text-center">
 				<thead>
@@ -77,7 +83,7 @@
 					<c:forEach var="trail" items="${allTrails}">
 						<tr>
 							<td>
-								<a href="/trails/${trail.id}"><c:out value="${trail.name}" /></a>		
+								<a href="/masar/trails/${trail.id}"><c:out value="${trail.name}" /></a>		
 							</td>
 							<td>
 							<c:out value="${trail.location}"/>
@@ -91,11 +97,7 @@
 				</tbody>
 			</table>
 			
-			<div class="row">
-						<div class="col">
-							<a class="btn btn-success" href="/admin/trails/new">Add a New Trail</a>
-						</div>
-				</div>
+			
 			</div>
 		</div>
 		<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">

@@ -1,11 +1,8 @@
 package com.masar.repository;
 
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 import com.masar.models.BusinessTrail;
 import com.masar.models.User;
 
@@ -15,8 +12,8 @@ public interface BusinessTrailRepository extends CrudRepository<BusinessTrail,Lo
 	List<BusinessTrail> findAll();
 	List<BusinessTrail> findByclient(User user);
 	List<BusinessTrail> findByJoinedGuestsNotContaining(User user);
-	
 	List<BusinessTrail> findByJoinedGuestsContaining(User user);
-	
+	List <BusinessTrail> findByLocationContains(String location); 
+	List <BusinessTrail> findByCategoryContains(String category);
 
 }

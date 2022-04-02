@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import com.masar.models.Comment;
-import com.masar.models.Trail;
 import com.masar.repository.CommentRepository;
 
 @Service

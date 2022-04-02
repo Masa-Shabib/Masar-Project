@@ -30,6 +30,10 @@ public class TrailService {
         }
     }
 	
+	public List<Trail> top3(){
+		return trailRepository.findTop3ByOrderByLocationDesc();
+	}
+	
 	public List<Trail> findTrailsByLocation(String location){
 		return trailRepository.findByLocationContains(location);
 	}

@@ -2,6 +2,8 @@ package com.masar.models;
 
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -52,7 +54,7 @@ public class User {
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private List<BusinessTrail> businessTrails;
     
-    @OneToMany(mappedBy = "commentUser", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "commentUser",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> userComments;
     
     @ManyToMany(fetch = FetchType.LAZY)

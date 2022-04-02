@@ -3,6 +3,7 @@ package com.masar.models;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -74,7 +75,7 @@ public class Trail {
     @JoinColumn(name = "admin_id")
     private User admin;
     
-    @OneToMany(mappedBy = "commentTrail", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "commentTrail",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> trailComments;
 
 	public Trail() {

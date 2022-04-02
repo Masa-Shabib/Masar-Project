@@ -18,7 +18,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
         <div class="container-fluid">
             <a class="navbar-brand me-5" href="/masar"><img
                     src="https://i.ibb.co/L9TyH4d/masar.png"
@@ -76,84 +76,44 @@
 		            </div>
 		        </div>
 		    </nav>
-	<div class="container"  style="height:75vh">
-
-		<div class="row my-5">
-			<div class="col-6 offset-3">
-				<div class="row mb-5">
-					<div class="col">
-						<h3>Create a new Business trail</h3>
-
-					</div>
-				</div>
-				<div class="row">
-					<div class="col text-start">
-
-
-						<form:form action="/client/businesstrails/new" method="post" modelAttribute="trail">
-						<form:input type="hidden" path="client" value="${currentUser.id}"/> 
-							<div class="form-floating mb-3">
-								<form:input type="text" class="form-control" id="name"
-								path="name" placeholder="name" />
-								<form:label path="name" for="floatingInput">name</form:label>
-								<form:errors class="text-danger" path="name" />
-							</div>
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="location"
-								path="location" placeholder="Location" rows="3"></form:input>
-								<form:label path="location" for="floatingInput">Location</form:label>
-								<form:errors class="text-danger" path="location" />
-							</div>
-							<div class="form-floating mb-3">
-								<form:select class="form-control" type="text" id="category"
-								path="category" placeholder="Category" rows="3">
-								<form:option value="Hiking">Hiking</form:option>
-								<form:option value="Mountain Biking">Mountain Biking</form:option>
-								<form:option value="Road Biking">Road Biking</form:option>
-								<form:option value="Trail Running">Trail Running</form:option>
-								</form:select>
-								<form:label path="category" for="floatingInput">Category</form:label>
-								<form:errors class="text-danger" path="category" />
-							</div>
-							
-							<div class="form-floating mb-3">
-								<form:select class="form-control" type="text" id="relatedTrail"
-								path="relatedTrail" placeholder="Category" rows="3">
-								<form:option value="0">None</form:option>
-								<c:forEach var="trail" items="${allTrails}">
-								<form:option value="${trail.id}"><c:out value="${trail.name}"></c:out></form:option>
-								</c:forEach>
-								</form:select>
-								<form:label path="relatedTrail" for="floatingInput">RelatedTrail</form:label>
-								<form:errors class="text-danger" path="relatedTrail" />
-							</div>
-							
-							<div class="form-floating mb-3">
-								<form:textarea class="form-control" id="description"
-								path="description" placeholder="Description" rows="3"></form:textarea>
-								<form:label path="description" for="floatingInput">Description</form:label>
-								<form:errors class="text-danger" path="description" />
-							</div>
-							
-							<div class="form-floating mb-3">
-								<form:input class="form-control" type="text" id="price"
-								path="price" placeholder="Price" rows="3" />
-								<form:label path="price" for="floatingInput">Price</form:label>
-								<form:errors class="text-danger" path="price" />
-							</div>
-							
-							<button type="submit" class="btn btn-success float-end ms-2">Submit</button>
-							<a href="/masar" class="btn btn-danger float-end">Cancel</a>
-						</form:form>
-					</div>
-
+<div class="container-lg-fluid m-3 p-3 border" style="height: 100vh;">
+		<div class="row p-3 ">
+			<div class="col-10">
+				<h2>Hi, <c:out value="${currentUser.username}"></c:out></h2>
+				<h3>Your Lucky Hit is <c:out value="${location}"></c:out></h3>
+				 <div class="row row-cols-1 row-cols-md-4 row-cols-sm-2 g-4">
+					<c:forEach var="item" items="${trails}">
+							            <div class="col">
+							              <div class="card h-100">
+							                <img
+							                  src="${item.imgUrl}" class="card-img-top h-75" alt="Trail Image"/>
+							                <div class="card-body">
+							                  <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
+							                  <p class="card-text">Distance: <c:out value="${item.distance}"></c:out></p>
+							                  <ul class="list-group list-group-flush">
+							                    <li class="list-group-item">
+							                      <a
+							                        href="/masar/trails/${item.id}"
+							                        class="btn btn-outline-secondary "
+							                        >Details</a
+							                      >
+							                    </li>
+							                    <li class="list-group-item">
+							                      <c:out value="${item.location}"></c:out>
+							                    </li>
+							                  </ul>
+							                </div>
+							              </div>
+							            </div>
+									</c:forEach>
 				</div>
 			</div>
 		</div>
 	</div>
-			<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
+		<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
 		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
         <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
 	  </footer >
+
 </body>
 </html>

@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>  
 <%@ page isErrorPage="true" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
@@ -19,7 +18,7 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
         <div class="container-fluid">
             <a class="navbar-brand me-5" href="/masar"><img
                     src="https://i.ibb.co/L9TyH4d/masar.png"
@@ -77,9 +76,9 @@
 		            </div>
 		        </div>
 		    </nav>
-		<div class="container-lg-fluid m-3 p-3 border" style="height: 100vh;">
+<div class="container-lg-fluid m-3 p-3 border" style="height: 100vh;">
 		<div class="row justify-content-between mb-4">
-			<div class="col-6 p-4"><h1 style="font-size: 55px;" >Trails to join </h1></div>
+			<div class="col-4 p-4"><h1 style="font-size: 55px;" >Palestinian Trails </h1></div>
 			<div class="col-4 p-4"><form class="d-flex mt-3" action="/masar/businessTrails/search" >
 					<input class="form-control me-2" name="location" type="search" placeholder="Search by location" id="trails" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
@@ -87,7 +86,6 @@
 		</div>
 		<div class="row p-3 ">
 			<div class="col-2 p-4" style="border-right:1px solid gray">
-			
 				<form action="/masar/businessTrails/filter_category" >
 								<p style="font-size: 20px;"><b>filter by Category</b></p>
 								<input type="radio" name="t_category" value="" checked style="display: none;">
@@ -114,12 +112,12 @@
 							<form action="/masar/businessTrails/filter_location" >
 								<p class="mt-3" style="font-size: 20px;"><b>filter by Location</b></p>
 								<input type="radio" name="t_location" value="" checked style="display: none;">
-								 <c:forEach var="item" items="${bTrails}">
+								 <c:forEach var="item" items="${locations}">
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="t_location" value="${item.location}"
+										<input class="form-check-input" type="radio" name="t_location" value="${item}"
 											id="flexRadioDefault1">
-										<label class="form-check-label" for="${item.location}" style="font-size: 12px;">
-											<c:out value="${item.location}"></c:out>
+										<label class="form-check-label" for="${item}" style="font-size: 12px;">
+											<c:out value="${item}"></c:out>
 										</label>
 									</div>
 								</c:forEach>
@@ -128,16 +126,15 @@
 			</div>
 			<div class="col-10">
 				 <div class="row row-cols-1 row-cols-md-2 row-cols-sm-2 g-4">
-					<c:forEach var="item" items="${bTrails}">
+					<c:forEach var="item" items="${trails}">
 							            <div class="col">
 							            	<div class="card h-100"  >
 											  <h5 class="card-header">Added by <c:out value="${item.client.username}"></c:out></h5>
 											  <div class="card-body">
 											    <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
-											     <p class="card-text"><strong>Location: </strong><c:out value="${item.location}"></c:out></p>
-											    <p class="card-text"><strong>Description: </strong><c:out value="${item.description}"></c:out></p>
-											    <p class="card-text"><strong>Category: </strong><c:out value="${item.category}"></c:out></p>
-											    	<p><strong>Price: </strong> <c:out value="${item.price}"></c:out> NIS</p>
+											     <p class="card-text">Location: <c:out value="${item.location}"></c:out></p>
+											    <p class="card-text">Description: <c:out value="${item.description}"></c:out></p>
+											    <p class="card-text">Category: <c:out value="${item.category}"></c:out></p>
 											     <c:choose>
 					                                <c:when test="${item.relatedTrail == 0}">
 					                                    <a href="/masar/trails" class="btn btn-outline-secondary ">Details</a>
@@ -166,8 +163,7 @@
 		                            </c:choose>
 											  </div>
 											  <div class="card-footer text-muted">
-											    <p class="card-text">Added on:
-											    <fmt:formatDate value="${item.createdAt}" type="date" pattern="h:m aa  MMM dd"/></p>
+											    <p class="card-text">Added on: <c:out value="${item.createdAt}"></c:out></p>
 											  </div>
 											</div>
 							            </div>
@@ -176,9 +172,10 @@
 			</div>
 		</div>
 	</div>
-	<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
+		<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
 		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
         <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
 	  </footer >
+
 </body>
 </html>

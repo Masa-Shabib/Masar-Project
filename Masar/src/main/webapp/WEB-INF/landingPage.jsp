@@ -208,7 +208,7 @@
       </div>
     </nav>
     <!-- Navbar -->
-
+	
     <!-- Carousel wrapper -->
     <div id="introCarousel" class="carousel slide carousel-fade shadow-2-strong" data-mdb-ride="carousel">
       <!-- Indicators -->
@@ -233,7 +233,11 @@
                     <button class="btn btn-outline-light btn-lg m-2" role="button" rel="nofollow" target="_blank">Explore</button>
                	</div>
                </form>		
-                
+				<form class="mt-4"  action="/masar/trails/luckyHit" >
+                <div class="form-floating d-flex mt-3 justify-content-center">
+                    <button class="btn btn-outline-light btn-lg m-2" role="button" rel="nofollow" target="_blank">Lucky Hit !!</button>
+               	</div>
+               </form>	
               </div>
             </div>
           </div>
@@ -292,62 +296,30 @@
       <section id="featured" class="text-center d-flex align-items-center">
         <div class="row">
         <h4 class="m-5 "><strong>Featured Trails</strong></h4>
-          <div class="col-lg-4 col-md-12 mb-4">
-            <div class="card">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
-                <a href="#!" class="btn btn-outline-secondary">Details</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
-                <a href="#!" class="btn btn-outline-secondary">Details</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-              <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
-                <a href="#!">
-                  <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                </a>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">
-                  Some quick example text to build on the card title and make up the bulk of the
-                  card's content.
-                </p>
-                <a href="#!" class="btn btn-outline-secondary">Details</a>
-              </div>
-            </div>
-          </div>
+          <c:forEach var="item" items="${trails}">
+           <div class="col">
+							              <div class="card h-100">
+							                <img
+							                  src="${item.imgUrl}" class="card-img-top h-75" alt="Trail Image"/>
+							                <div class="card-body">
+							                  <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
+							                  <p class="card-text">Distance: <c:out value="${item.distance}"></c:out></p>
+							                  <ul class="list-group list-group-flush">
+							                    <li class="list-group-item">
+							                      <a
+							                        href="/masar/trails/${item.id}"
+							                        class="btn btn-outline-secondary "
+							                        >Details</a
+							                      >
+							                    </li>
+							                    <li class="list-group-item">
+							                      <c:out value="${item.location}"></c:out>
+							                    </li>
+							                  </ul>
+							                </div>
+							              </div>
+							            </div>
+			</c:forEach>
         </div>
       </section>
      <!--Section: Content--> 

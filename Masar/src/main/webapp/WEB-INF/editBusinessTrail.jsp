@@ -102,6 +102,12 @@
 							</div>
 							
 							<div class="form-floating mb-3">
+								<form:input class="form-control" type="text" id="location"
+								path="location" placeholder="Location" rows="3"></form:input>
+								<form:label path="location" for="floatingInput">Location</form:label>
+								<form:errors class="text-danger" path="location" />
+							</div>
+							<div class="form-floating mb-3">
 								<form:select class="form-control" type="text" id="category"
 								path="category" placeholder="Category" rows="3">
 								<form:option value="Hiking">Hiking</form:option>
@@ -116,6 +122,7 @@
 							<div class="form-floating mb-3">
 								<form:select class="form-control" type="text" id="relatedTrail"
 								path="relatedTrail" placeholder="Category" rows="3">
+								<form:option value="0">None</form:option>
 								<c:forEach var="trail" items="${allTrails}">
 								<form:option value="${trail.id}"><c:out value="${trail.name}"></c:out></form:option>
 								</c:forEach>
