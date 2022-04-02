@@ -1,5 +1,5 @@
 Hi There !! 
-This is our very first Python project and we are very proud about it.
+This is our very first Java project and we are very proud about it.
 
 # Masar
 ## What is Masar ?
@@ -21,20 +21,16 @@ SQLITE3
 ## Some Screenshots of the Website: 
 ![screen_one](readme_img/01.JPG)
 ![screen_Two](readme_img/02.JPG)
-
 ![screen_Four](readme_img/04.JPG)
 ![screen_Five](readme_img/05.JPG)
 ![screen_Six](readme_img/06.JPG)
 
 
 ## Functionality ?
-Users of the website can register as Companies or as Jobseekrs
-based on how the user registered a set of different features can be accessed such as adding jobs, applying for jobs, accepting and rejecting clients, filtering and browsing jobs using the search bar or the filter bar.
+The website will target two types of users, Hikers “Guests” who are looking for information about trails, and Clients “Hikes Organizers” who create hiking trips for hikers “Guests” to join. Spring  Security was used to specify the access and authorization rights for each user of the website.An external API was integrated into the website to determine the starting and ending points for each trail to provide the user with additional details about the trails.
+
 
 ## About us ? 
 This Website was designed by three enthusiastic junior Web-Devlopers, The idea of JobPal came from the need for a platform where Job opportunities can be offered and exchanged. We encourage all the users of the platform to reach out to all the companies registered on the website. Life is all about opportunities. We hope that this Website will be the seed for all Job seekers who are trying to find a place to belong, a place where people can grow professionally and reflect on their Careers, We wish you all the luck in the world !
 
-Designed and maintained By: __Mussab Tafal,  Rafat Darawshe,  Masa Shabib__
-
-## Credits
-We would like to express our deep gratitude and appreciation for the amazing staff of __Axsos Academy__ for all the hard work and dedication invested in making us self sufficient Web-Developers, Thank you very much.
+Designed and maintained By: __Mohammad Omair,  Mubarak Mubarak,  Masa Shabib__
