@@ -7,7 +7,7 @@
 <head>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <meta charset="ISO-8859-1">
-<title>Add a new Trail</title>
+<title>Trail to join</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->

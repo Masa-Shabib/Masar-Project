@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>MASAR</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <!-- YOUR own local CSS -->
@@ -83,7 +83,7 @@
       }
 	
 	#vision{
-       background-image: url('https://i.ibb.co/L8zLQ1z/IMG-20211013-112137.jpg');
+       background-image: url('https://i.ibb.co/GCkV5JG/IMG-20211217-142604-1.jpg');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center center;
@@ -224,7 +224,7 @@
         <div style="height: 112vh " class="carousel-item active">
           <div style="height: 112vh;background-color: rgba(0, 0, 0, 0.1);"   class="mask" >
             <div class="d-flex justify-content-center align-items-center h-100">
-              <div class="text-white text-center">
+              <div class="text-white text-center  mt-5">
                 <h1 class="mb-3">Explore Existing Trails By Your Favourite Location</h1>
                <form class="mt-4"  action="/masar/trails/search" >
                 <div class="form-floating d-flex mt-3 justify-content-center">
@@ -293,9 +293,13 @@
 
       <!--Section: Content-->
       
+
       <section id="featured" class="text-center d-flex align-items-center">
-        <div class="row">
+      <div class="container">
+        <div class="row ">
         <h4 class="m-5 "><strong>Featured Trails</strong></h4>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-sm-3 g-4">
           <c:forEach var="item" items="${trails}">
            <div class="col">
 							              <div class="card h-100">
@@ -320,6 +324,7 @@
 							              </div>
 							            </div>
 			</c:forEach>
+        </div>
         </div>
       </section>
      <!--Section: Content--> 
@@ -461,10 +466,13 @@
     <!-- Copyright -->
   </footer>
   <!--Footer-->
-  
+
    <!-- sript-for-icons -->
+   https://www.youtube.com/embed/M7lc1UVf-VE?&autoplay=1&loop=1&rel=0&showinfo=0&color=white&iv_load_policy=3&playlist=M7lc1UVf-VE
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/XvdPQ15F-6w?rel=0&amp;loop=1&amp;autoplay=1&amp;&loop=1&rel=0&showinfo=0&mute=1&controls=0 " title="YouTube video player" frameborder="0" 
+   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+`
 </body>
 </html>
