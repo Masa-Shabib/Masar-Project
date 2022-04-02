@@ -31,6 +31,6 @@ The website will target two types of users, Hikers “Guests” who are looking 
 
 
 ## About us ? 
-This Website was designed by three enthusiastic junior Web-Devlopers, The idea of JobPal came from the need for a platform where Job opportunities can be offered and exchanged. We encourage all the users of the platform to reach out to all the companies registered on the website. Life is all about opportunities. We hope that this Website will be the seed for all Job seekers who are trying to find a place to belong, a place where people can grow professionally and reflect on their Careers, We wish you all the luck in the world !
+This Website was designed by three enthusiastic junior Web-Devlopers, The idea of the website was initiated from the need of stimulating tourism on both local and national domains, therefore encouraging people to know the story and history of palestine, our application is the voice of Palestine,reminding people from all over the world that once upon a time free souls has lived here, held their ground and defended their identities.
 
 Designed and maintained By: __Mohammad Omair,  Mubarak Mubarak,  Masa Shabib__
