@@ -1,6 +1,8 @@
 package com.masar.repository;
 
 import java.util.List;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import com.masar.models.Trail;
@@ -11,6 +13,9 @@ public interface TrailRepository extends CrudRepository<Trail, Long> {
 	List <Trail> findAll();
 	List <Trail> findByLocationContains(String location); 
 	List <Trail> findByCategoryContains(String category);
+	
+	@Query(nativeQuery=true, value="SELECT id  FROM trails ORDER BY RAND() LIMIT 1")
+	public Long findRandomTrails();
 	
 	
 }

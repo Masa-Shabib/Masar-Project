@@ -233,6 +233,12 @@
                     <button class="btn btn-outline-light btn-lg m-2" role="button" rel="nofollow" target="_blank">Explore</button>
                	</div>
                </form>		
+               
+               <form class="mt-4"  action="/masar/trails/search/random" >
+                <div class="form-floating d-flex mt-3 justify-content-center">
+                    <button class="btn btn-outline-light btn-lg m-2" role="button" rel="nofollow" target="_blank">Choose for me!</button>
+               	</div>
+               </form>		
                 
               </div>
             </div>
@@ -361,7 +367,7 @@
           <div class="row">
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://i.ibb.co/Nnxh6pg/IMG-20210402-093503.jpg" class="img-fluid" style="height:350px; width:600px" />
+                <img src="https://i.ibb.co/Nnxh6pg/IMG-20210402-093503.jpg" class="img-fluid" style="height:330px; width:600px" />
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -402,7 +408,7 @@
             
             <div class="col-md-6 gx-5 mb-4">
               <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                <img src="https://i.ibb.co/8KQswPg/IMG-20211105-112815.jpg" class="img-fluid"  style="height:350px; width:600px"/>
+                <img src="https://i.ibb.co/8KQswPg/IMG-20211105-112815.jpg" class="img-fluid"  style="height:330px; width:600px"/>
                 <a href="#!">
                   <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>

@@ -15,6 +15,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+
 @Entity
 @Table(name="comments")
 public class Comment {

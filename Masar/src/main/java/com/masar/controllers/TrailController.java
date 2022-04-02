@@ -113,6 +113,32 @@ public class TrailController {
 			model.addAttribute("locations", locations);
 			return "searchTrails.jsp";
 	}
+	
+	
+	@RequestMapping("/masar/trails/search/random")
+	public String randomTrail(Model model,Principal principal) {
+		String username = principal.getName();
+		model.addAttribute("currentUser", userService.findByUsername(username));
+		Long randomTrailFind = trailService.findTrailsByRandomLocation();
+		Trail randomTrail= trailService.findTrailById(randomTrailFind);
+		model.addAttribute("trail", randomTrail);
+		List<Trail> allTrails = trailService.allTrails();
+		model.addAttribute("allTrails", allTrails);
+		List <String> locations = new ArrayList<String>() ;
+		for (Trail trail : allTrails) {
+			if(!locations.contains(trail.getLocation())) {
+				locations.add(trail.getLocation());
+			}
+		}
+		model.addAttribute("locations", locations);
+		return "searchTrailsRandom.jsp";
+	}
+	
+	
+	
+	
+	
+	
 	@RequestMapping("/masar/trails/filter_category")
 	public String filter1Trails(Model model,@RequestParam("t_category") String category,Principal principal) {
 			String username = principal.getName();
@@ -213,7 +239,7 @@ public class TrailController {
 	
 	@RequestMapping("/admin/trails/{id}/delete")
 	public String deleteEvent(@PathVariable("id")Long id) {
-		trailService.deleteTrail(id);
+		trailService.delete(id);
 		return "redirect:/admin/trails/";
 	}
 	
