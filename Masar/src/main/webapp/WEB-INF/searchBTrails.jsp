@@ -10,8 +10,6 @@
 <title>Trail to join</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/main.css"/>
 <!-- For any Bootstrap that uses JS or jQuery-->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -132,9 +130,10 @@
 											  <h5 class="card-header">Added by <c:out value="${item.client.username}"></c:out></h5>
 											  <div class="card-body">
 											    <h5 class="card-title"><c:out value="${item.name}"></c:out> Trail</h5>
-											     <p class="card-text">Location: <c:out value="${item.location}"></c:out></p>
-											    <p class="card-text">Description: <c:out value="${item.description}"></c:out></p>
-											    <p class="card-text">Category: <c:out value="${item.category}"></c:out></p>
+											     <p class="card-text"><strong>Location: </strong><c:out value="${item.location}"></c:out></p>
+											    <p class="card-text"><strong>Description: </strong><c:out value="${item.description}"></c:out></p>
+											    <p class="card-text"><strong>Category: </strong><c:out value="${item.category}"></c:out></p>
+											    	<p><strong>Price: </strong> <c:out value="${item.price}"></c:out> NIS</p>
 											     <c:choose>
 					                                <c:when test="${item.relatedTrail == 0}">
 					                                    <a href="/masar/trails" class="btn btn-outline-secondary ">Details</a>
@@ -163,7 +162,8 @@
 		                            </c:choose>
 											  </div>
 											  <div class="card-footer text-muted">
-											    <p class="card-text">Added on: <c:out value="${item.createdAt}"></c:out></p>
+											    <p class="card-text">Added on:
+											    <fmt:formatDate value="${item.createdAt}" type="date" pattern="h:m aa  MMM dd"/></p>
 											  </div>
 											</div>
 							            </div>

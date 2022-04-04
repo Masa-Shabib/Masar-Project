@@ -10,13 +10,23 @@
 <title>Login Page</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<!-- YOUR own local CSS -->
 <!-- For any Bootstrap that uses JS or jQuery-->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class="container-lg-fluid m-3 p-3 " >
+	<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+        <div class="container-fluid">
+            <a class="navbar-brand me-5" href="/masar"><img
+                    src="https://i.ibb.co/L9TyH4d/masar.png"
+                    alt="logo" style="width: 200px; height: 60px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+		        </div>
+		    </nav>
+	<div class="container-lg-fluid m-3 p-3 "   style="height:75vh;">
 		<div class="row justify-content-around mb-4">
 	<div class = "col-4 mt-5">
     <c:if test="${logoutMessage != null}">
@@ -41,6 +51,10 @@
     </div>
     </div>
     </div>
+    	<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
+		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
+        <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
+	  </footer >
 </body>
 </html>
 

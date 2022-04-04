@@ -11,8 +11,6 @@
 <title>Trail to join</title>
 <!-- for Bootstrap CSS -->
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
-<!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/main.css"/>
 <!-- For any Bootstrap that uses JS or jQuery-->
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
@@ -77,7 +75,7 @@
 		            </div>
 		        </div>
 		    </nav>
-		<div class="container-lg-fluid m-3 p-3 border" style="height: 100vh;">
+		<div class="container-lg-fluid m-3 p-3 border" >
 		<div class="row justify-content-between mb-4">
 			<div class="col-6 p-4"><h1 style="font-size: 55px;" >Trails to join </h1></div>
 			<div class="col-4 p-4"><form class="d-flex mt-3" action="/masar/businessTrails/search" >

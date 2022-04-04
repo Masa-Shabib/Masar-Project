@@ -55,6 +55,7 @@ public class BusinessTrailService {
         editTrail.setDescription(trail.getDescription());
         editTrail.setPrice(trail.getPrice());
         editTrail.setLocation(trail.getLocation());
+        editTrail.setRelatedTrail(trail.getRelatedTrail());
         return businessTrailRepository.save(editTrail);
     }
 	

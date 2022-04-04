@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,6 +16,17 @@
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
+        <div class="container-fluid">
+            <a class="navbar-brand me-5" href="/masar"><img
+                    src="https://i.ibb.co/L9TyH4d/masar.png"
+                    alt="logo" style="width: 200px; height: 60px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+		        </div>
+		    </nav>
      <div class="container-lg-fluid m-3 p-3 " >
 	<div class="row justify-content-around mb-4">
 	<div class = "col-4 mt-5">
@@ -45,5 +57,9 @@
     </div>
     </div>
     </div>
+        	<footer style="background-color:#ebebeb;padding: 15px;text-align: center;">
+		<p style="color: gray;">"We're constantly shown the "real world" on our screens but we come face to face with the real world out on the trail." - We Dream of Travel</p>
+        <p style="color: gray;">Copyright © 2022 Private Ownership - Masar Team - Palestine</p>
+	  </footer >
 </body>
 </html>
